@@ -1,7 +1,7 @@
 💻 CIT-U SSG Website —
 This is the official repository for the CIT-U Supreme Student Government (SSG) Website, developed by SSG representatives for the Technologians — the student body of the Cebu Institute of Technology – University (CIT-U).
 
-📌 About
+📌 About —
 The SSG website is a digital platform created to improve communication, accessibility, and transparency between the SSG and the student community. It serves as a hub for important announcements, events, services, and more.
 
 🎯 Purpose
@@ -16,5 +16,5 @@ The SSG website is a digital platform created to improve communication, accessib
 
 🛠 Services – Provide easy access to forms, feedback channels, and other student services.
 
-🚀 Built & Maintained By
+🚀 Built & Maintained By —
 The SSG Representatives of CIT-U, committed to serving and empowering the Technologians.
