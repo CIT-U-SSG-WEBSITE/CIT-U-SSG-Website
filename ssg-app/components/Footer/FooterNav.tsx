@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/Accordion";
 import Link from "next/link";
 import {useMediaQuery} from "react-responsive";
 
@@ -19,27 +19,27 @@ const footerLinks : linkGroup[] = [
   {
     title: "Government",
     links: [
-      { name: "Executive",    href: "/" },
-      { name: "Legislative",  href: "/" },
-      { name: "Judiciary",    href: "/" },
-      { name: "Officers",     href: "/" },
+      { name: "List of officers", href: "/government/officers" },
+      { name: "Executive",        href: "/government/executive" },
+      { name: "Legislative",      href: "/government/legislative" },
+      { name: "Judiciary",        href: "/government/judiciary" },
     ]
   },
   {
     title: "Documents",
     links: [
-      { name: "Constitution",       href: "/" },
-      { name: "Resolutions",        href: "/" },
-      { name: "Executive orders",   href: "/" },
-      { name: "Letters of Appeal",  href: "/" },
+      { name: "Constitution",       href: "/government/constitution" },
+      { name: "Resolutions",        href: "/actions/resolutions" },
+      { name: "Executive orders",   href: "/actions/executive-orders" },
+      { name: "Letters of Appeal",  href: "/actions/appeals" },
     ]
   },
   {
-    title: "Activities",
+    title: "Actions",
     links: [
-      { name: "Sessions",   href: "/" },
-      { name: "Projects",   href: "/" },
-      { name: "Incentives", href: "/" },
+      { name: "Session",    href: "/actions/sessions" },
+      { name: "Projects",   href: "/actions/projects" },
+      { name: "Incentives", href: "/services" },
     ]
   },
 ];

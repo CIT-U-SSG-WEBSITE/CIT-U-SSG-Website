@@ -6,7 +6,7 @@ import Image from "next/image";
 import {AlignRight as Hamburger} from 'lucide-react';
 import {useMediaQuery} from "react-responsive";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import {
   Sheet,
   SheetContent,
@@ -18,7 +18,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink, NavigationMenuList,
   NavigationMenuTrigger, navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu";
+} from "@/components/ui/NavigationMenu";
 
 interface linkPair {
   name: string;
@@ -30,32 +30,34 @@ interface linkGroup {
   links: linkPair[] | string;
 }
 
+/**
+ * These are the links for the header navigation. Links are organized into groups. These groups are rendered as
+ * dropdowns (tab and desktop) or list in a sidebar (mobile).
+ * */
 const headerLinks : linkGroup[] = [
   {
     title: "Government",
     links: [
-      { name: "Executive",    href: "/government/executive" },
-      { name: "Legislative",  href: "/government/legislative" },
-      { name: "Judiciary",    href: "/government/judiciary" },
-      { name: "Officers",     href: "/" },
+      { name: "List of officers", href: "/government/officers" },
+      { name: "Executive",        href: "/government/executive" },
+      { name: "Legislative",      href: "/government/legislative" },
+      { name: "Judiciary",        href: "/government/judiciary" },
+      { name: "Constitution",     href: "/government/constitution" },
     ]
   },
   {
-    title: "Activities",
+    title: "Actions",
     links: [
-      { name: "Constitution",       href: "/" },
-      { name: "Resolutions",        href: "/" },
-      { name: "Executive orders",   href: "/" },
-      { name: "Letters of Appeal",  href: "/" },
+      { name: "Session",            href: "/actions/sessions" },
+      { name: "Projects",           href: "/actions/projects" },
+      { name: "Resolutions",        href: "/actions/resolutions" },
+      { name: "Executive orders",   href: "/actions/executive-orders" },
+      { name: "Letters of Appeal",  href: "/actions/appeals" },
     ]
   },
   {
     title: "Services",
-    links: [
-      { name: "Sessions",   href: "/" },
-      { name: "Projects",   href: "/" },
-      { name: "Incentives", href: "/" },
-    ]
+    links: "/services"
   },
   {
     title: "Contact",
@@ -67,7 +69,7 @@ function HeaderBar() {
   const isMobile = useMediaQuery({maxWidth: 640});
 
   return (
-    <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 justify-between fixed top-0 z-50 bg-background">
+    <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 justify-between fixed top-0 z-50 bg-background backdrop-blur-sm text-dark-neutral">
       <Link href="/" className="flex gap-3 items-center">
         <Image width={42} height={20} src="/icon_logo.png" alt="SSG Bridge the Gap logo"/>
         <span className="font-bold hidden lg:block font-serif text-md select-none">
@@ -75,7 +77,12 @@ function HeaderBar() {
         </span>
       </Link>
 
-      {isMobile ? (
+      { /**
+       This is the header navigation links.
+       In mobile (<640px), it renders a hamburger with a toggle sidebar.
+       In tab and desktop, it renders a row of link tabs.
+       */
+        isMobile ? (
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost">
@@ -83,7 +90,7 @@ function HeaderBar() {
             </Button>
           </SheetTrigger>
           <SheetContent >
-            <div className="flex flex-col py-12 gap-10 px-6">
+            <div className="flex flex-col py-12 gap-10 px-6 overflow-y-auto scrollbar-thin">
               {headerLinks.map(linkGroup =>
                 <>
                   {Array.isArray(linkGroup.links) ? (

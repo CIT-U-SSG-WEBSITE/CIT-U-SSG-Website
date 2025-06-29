@@ -44,13 +44,18 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --color-maroon: var(--maroon);
+  --color-maroon-light: var(--maroon-light);
   --color-light-neutral: var(--light-neutral);
+  --color-dark-neutral: var(--dark-neutral);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
   --color-near-white: var(--near-white);
 }
 
 :root {
   /* Custom colors */
   --maroon: oklch(0.3405 0.1361 29.24); /* maroon */
+  --maroon-light: oklch(0.4451 0.1169 23.74); /* maroon light */
   --light-neutral: oklch(0.9234 0 0);  /* light neutral */
   --dark-neutral: oklch(0.2053 0.0029 67.66); /* dark neutral */
   --near-white: oklch(0.9696 0 0); /* near white */
@@ -95,8 +100,49 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans), sans-serif;
+  }
+
+  .bg-maroon_gradient {
+    @apply bg-gradient-to-tr from-maroon to-maroon-light;
+  }
+
+  /* Minimal, invisible background scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    background: transparent;
+    width: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(23, 22, 21, 0.2);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+    width: 0;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(23, 22, 21, 0.2) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-button:single-button,
+  .scrollbar-thin::-webkit-scrollbar-button:vertical:increment,
+  .scrollbar-thin::-webkit-scrollbar-button:vertical:decrement,
+  .scrollbar-thin::-webkit-scrollbar-button:horizontal:increment,
+  .scrollbar-thin::-webkit-scrollbar-button:horizontal:decrement {
+    display: none;
+    width: 0;
+    height: 0;
   }
 }
