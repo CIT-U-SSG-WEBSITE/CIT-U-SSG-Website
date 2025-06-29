@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Merriweather, Open_Sans } from "next/font/google";
 import "./globals.css";
 import HeaderBar from "@/components/HeaderBar";
+import * as React from "react";
+import FooterBar from "@/components/Footer/FooterBar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const merriweather = Merriweather({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-merriweather',
+});
+
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "SSG | CIT University",
@@ -20,20 +25,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+} : Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <section className="flex w-full h-15 border px-6 py-2 items-center justify-between">
-          <span className="text-bold">LOGO</span>
-          <HeaderBar />
-        </section>
+    <body className={`font-sans ${merriweather.variable} ${openSans.variable} antialiased`}>
+      <HeaderBar/>
+      <main className="mt-[120px] min-h-screen">
         {children}
-      </body>
+      </main>
+      <FooterBar/>
+    </body>
     </html>
   );
 }
