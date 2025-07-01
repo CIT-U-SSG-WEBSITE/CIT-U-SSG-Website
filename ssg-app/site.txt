@@ -1,0 +1,41 @@
+WE GO TO --> citussg.com/government/legislative/
+
+---------------
+
+home/
+├── government/
+│   ├── constitution
+│   ├── executive/
+│   │   ├── cia
+│   │   ├── ceca
+│   │   └── ...
+│   ├── legislative/
+│   │   ├── cof
+│   │   ├── ctc
+│   │   └── ...
+│   ├── judiciary
+│   └── officers/
+│       ├── officer1
+│       ├── officer2
+│       └── ...
+├── actions/
+│   ├── latest
+│   ├── executive-orders/
+│   │   ├── eo1
+│   │   ├── eo2
+│   │   └── ...
+│   ├── projects/
+│   │   ├── project1
+│   │   ├── project2
+│   │   └── ...
+│   ├── resolutions/
+│   │   ├── reso1
+│   │   ├── reso2
+│   │   └── ...
+│   └── sessions/
+│       ├── session1
+│       ├── session2
+│       ├── ...
+│       └── ...
+└── services/
+    └── NULL
