@@ -30,7 +30,7 @@ const footerLinks : linkGroup[] = [
     links: [
       { name: "Constitution",       href: "/government/constitution" },
       { name: "Resolutions",        href: "/actions/resolutions" },
-      { name: "Executive orders",   href: "/actions/executive-orders" },
+      { name: "Executive orders",   href: "/actions/eo" },
       { name: "Letters of Appeal",  href: "/actions/appeals" },
     ]
   },

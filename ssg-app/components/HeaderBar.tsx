@@ -51,7 +51,7 @@ const headerLinks : linkGroup[] = [
       { name: "Session",            href: "/actions/sessions" },
       { name: "Projects",           href: "/actions/projects" },
       { name: "Resolutions",        href: "/actions/resolutions" },
-      { name: "Executive orders",   href: "/actions/executive-orders" },
+      { name: "Executive orders",   href: "/actions/eo" },
       { name: "Letters of Appeal",  href: "/actions/appeals" },
     ]
   },
