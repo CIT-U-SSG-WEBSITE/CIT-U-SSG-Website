@@ -44,7 +44,7 @@ const footerLinks : linkGroup[] = [
   },
 ];
 
-function FooterNav(props) {
+function FooterNav() {
   const isMobile = useMediaQuery({ maxWidth: 640 });
 
   return (
