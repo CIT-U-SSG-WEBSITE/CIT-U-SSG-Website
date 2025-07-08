@@ -19,16 +19,8 @@ import {
   NavigationMenuLink, NavigationMenuList,
   NavigationMenuTrigger, navigationMenuTriggerStyle
 } from "@/components/ui/NavigationMenu";
+import {linkGroup} from "@/lib/link_types";
 
-interface linkPair {
-  name: string;
-  href: string;
-}
-
-interface linkGroup {
-  title: string;
-  links: linkPair[] | string;
-}
 
 /**
  * These are the links for the header navigation. Links are organized into groups. These groups are rendered as

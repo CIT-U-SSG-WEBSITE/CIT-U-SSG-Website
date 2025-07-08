@@ -1,16 +1,17 @@
 import React from 'react';
 import SideNavigation from "@/components/Government/SideNavigation";
+import {linkPair} from "@/lib/link_types";
 
 type LayoutProps = {
   children: React.ReactNode;
 }
 
-const links : string[] = [
-  "Executive",
-  "Legislative",
-  "Judiciary",
-  "Constitution",
-  "Officers"
+const links : linkPair[] = [
+  { name: "Officers", href: "/government/officers" },
+  { name: "Executive",        href: "/government/executive" },
+  { name: "Legislative",      href: "/government/legislative" },
+  { name: "Judiciary",        href: "/government/judiciary" },
+  { name: "Constitution",     href: "/government/constitution" },
 ]
 
 function Layout({ children }: LayoutProps) {

@@ -4,16 +4,7 @@ import React from 'react';
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/Accordion";
 import Link from "next/link";
 import {useMediaQuery} from "react-responsive";
-
-interface linkPair {
-  name: string;
-  href: string;
-}
-
-interface linkGroup {
-  title: string;
-  links: linkPair[];
-}
+import {linkGroup} from "@/lib/link_types";
 
 const footerLinks : linkGroup[] = [
   {
@@ -57,7 +48,7 @@ function FooterNav() {
                 {linkGroup.title}
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
-                {linkGroup.links.map(link => (
+                {Array.isArray(linkGroup.links) && linkGroup.links.map(link => (
                   <Link href={link.href} className="text-sm">
                     {link.name}
                   </Link>
@@ -73,7 +64,7 @@ function FooterNav() {
                 <span className="font-serif text-lg">
                   {linkGroup.title}
                 </span>
-              {linkGroup.links.map(link => (
+              {Array.isArray(linkGroup.links) && linkGroup.links.map(link => (
                 <Link href={link.href} className="text-sm">
                   {link.name}
                 </Link>

@@ -11,16 +11,15 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger
 } from "@/components/ui/NavigationMenu";
+import {linkPair} from "@/lib/link_types";
 
 type Props = {
-  links: string[];
+  links: linkPair[];
 }
 
 function SideNavigation({links}: Props) {
   const pathname = usePathname();
-  const pathTokens = pathname.split("/");
-  const currentPage = pathTokens[1];
-  const currentSection = pathTokens[2];
+  const currentLink = links.filter(link => link.href === pathname)[0];
   const isTablet = useMediaQuery({maxWidth: 768});
   
   return (
@@ -28,16 +27,16 @@ function SideNavigation({links}: Props) {
       {isTablet ? (
         <NavigationMenu>
           <NavigationMenuItem className="list-none">
-            <NavigationMenuTrigger className="rounded-none font-serif text-base lg:text-lg pb-1.5 px-0 gap-1 flex w-fit transition-all duration-300 border-b-4 font-bold border-gold ">
-              {`${currentSection[0].toUpperCase()}${currentSection.slice(1)}`}
+            <NavigationMenuTrigger className="rounded-none font-serif text-lg pb-1.5 px-0 gap-1 flex w-fit transition-all duration-300 border-b-4 font-bold border-gold ">
+              {currentLink.name}
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="flex flex-col pl-0 py-2 w-[160px] gap-2">
-                {links.filter(link => currentSection !== link.toLowerCase())
+                {links.filter(link => pathname !== link.href)
                   .map((link) => (
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link href={`/${currentPage}/${link.toLowerCase()}`}>{link}</Link>
+                      <Link href={link.href}>{link.name}</Link>
                     </NavigationMenuLink>
                   </li>
                 ))}
@@ -49,8 +48,8 @@ function SideNavigation({links}: Props) {
         <nav>
           <ul className="flex lg:flex-col gap-5">
             {links.map((link) => (
-              <li className={`font-serif lg:text-lg pb-1.5 flex w-fit transition-all duration-300 border-b-4 ${currentSection === link.toLowerCase() ? "font-bold border-gold" : "border-transparent"}`}>
-                <Link href={`/${currentPage}/${link.toLowerCase()}`}>{link}</Link>
+              <li className={`font-serif lg:text-lg pb-1.5 flex w-fit transition-all duration-300 border-b-4 ${pathname === link.href ? "font-bold border-gold" : "border-transparent"}`}>
+                <Link href={link.href} className="whitespace-nowrap">{link.name}</Link>
               </li>
             ))}
           </ul>
