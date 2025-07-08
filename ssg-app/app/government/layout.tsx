@@ -19,7 +19,7 @@ function Layout({ children }: LayoutProps) {
     <div className="flex flex-col lg:flex-row w-full px-4 md:px-8 lg:px-16 gap-8 border">
       <SideNavigation links={links} />
       <section className="flex justify-center items-center w-full h-full">
-        <div className="flex max-w-[920px] grow border border-dark-neutral">
+        <div className="flex max-w-[920px] grow">
           {children}
         </div>
       </section>
