@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Merriweather, Open_Sans } from "next/font/google";
 import "./globals.css";
-import HeaderBar from "@/components/HeaderBar";
+import HeaderBar from "@/components/Header/HeaderBar";
 import * as React from "react";
 import FooterBar from "@/components/Footer/FooterBar";
 

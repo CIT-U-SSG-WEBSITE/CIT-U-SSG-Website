@@ -61,7 +61,7 @@ function HeaderBar() {
   const isMobile = useMediaQuery({maxWidth: 640});
 
   return (
-    <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 justify-between fixed top-0 z-50 bg-background backdrop-blur-sm text-dark-neutral">
+    <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 justify-between fixed top-0 z-50 bg-background/90 backdrop-blur-lg text-dark-neutral">
       <Link href="/" className="flex gap-3 items-center">
         <Image width={42} height={20} src="/icon_logo.png" alt="SSG Bridge the Gap logo"/>
         <span className="font-bold hidden lg:block font-serif text-md select-none">
