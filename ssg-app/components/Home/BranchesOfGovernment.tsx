@@ -38,36 +38,39 @@ const Branches : Branch[] = [
 
 function BranchesOfGovernment() {
   return (
-    <section className="BRANCHES w-full max-w-[1320px] flex flex-col gap-16 px-20">
-      <div className="BRANCHES_TEXT flex justify-between items-end">
+    <section className="w-full max-w-[1320px] flex flex-col gap-16 px-6 md:px-10 lg:px-16">
+      <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 lg:gap-0">
         <div className="flex flex-col max-w-[600px] gap-1">
           <span className="font-serif text-3xl font-bold">Branches of government</span>
           <span>The Supreme Student Government stands on three strong pillars, each playing a unique role, working together to serve and represent every Technologian.
             </span>
         </div>
-        <Button variant="default">
+        <Button variant="default" className="w-fit">
           Learn more
           <ArrowRight />
         </Button>
       </div>
-      <div className="flex gap-16 w-full">
+      
+      <div className="flex gap-12 lg:gap-16 w-full flex-col lg:flex-row">
         {Branches.map(branch => {
           const Icon = branch.icon;
           return (
-            <div className="flex flex-col gap-8 w-full items-start">
+            <div className="flex lg:flex-col gap-6 lg:gap-8 w-full items-start">
               <div className="rounded-full p-3 bg-gold text-light-neutral">
                 <Icon size={32} strokeWidth={2} />
               </div>
-              <div className="CONTENT flex flex-col gap-4 w-full">
-                <span className="text-2xl font-serif font-bold">The {branch.name}</span>
-                <span>{branch.description}</span>
+              <div className="flex flex-col gap-6 lg:gap-8 w-full items-start">
+                <div className="CONTENT flex flex-col gap-4 w-full">
+                  <span className="text-2xl font-serif font-bold">The {branch.name}</span>
+                  <span>{branch.description}</span>
+                </div>
+                <Link href={branch.url}>
+                  <Button variant="ghost" className="!px-0">
+                    Learn more
+                    <ArrowRight />
+                  </Button>
+                </Link>
               </div>
-              <Link href={branch.url}>
-                <Button variant="ghost" className="!px-0">
-                  Learn more
-                  <ArrowRight />
-                </Button>
-              </Link>
             </div>
           )
         })}

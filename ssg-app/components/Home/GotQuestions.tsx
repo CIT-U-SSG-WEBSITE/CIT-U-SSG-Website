@@ -7,7 +7,7 @@ import {Textarea} from "@/components/ui/textarea";
 
 function GotQuestions() {
   return (
-    <section className="w-full max-w-[1320px] flex gap-16 px-20">
+    <section className="w-full max-w-[1320px] flex flex-col lg:flex-row gap-16 px-8 md:px-12 lg:px-20">
       <div className="flex flex-col max-w-[480px] gap-8">
         <div className="flex flex-col gap-2">
           <span className="font-serif text-3xl font-bold">Got questions? We’ve got answers.</span>
@@ -29,7 +29,7 @@ function GotQuestions() {
             <Label htmlFor="email" className="!text-sm !font-normal ml-1">Institutional email</Label>
             <Input id="email" type="email" className="rounded-lg !bg-light-neutral h-10"/>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-col lg:flex-row gap-3">
             <div className="flex flex-col gap-2 w-full">
               <Label htmlFor="id_number" className="!text-sm !font-normal ml-1">ID number</Label>
               <Input id="id_number" className="rounded-lg !bg-light-neutral h-10"/>

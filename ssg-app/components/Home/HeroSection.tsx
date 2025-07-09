@@ -4,13 +4,13 @@ import {ArrowRight} from "lucide-react";
 
 function HeroSection() {
   return (
-    <section className="HERO w-full max-w-[1320px] flex flex-col gap-16 px-20">
-      <div className="HERO_TEXT flex justify-between items-end">
+    <section className="w-full max-w-[1320px] flex flex-col gap-16 px-6 md:px-10 lg:px-16">
+      <div className="flex flex-col md:flex-row justify-between lg:items-end gap-6 lg:gap-0">
         <div className="flex flex-col">
-          <span className="font-serif text-4xl font-bold">FOR THE TECHNOLOGIANS, ALWAYS</span>
-          <span className="text-xl">The sole representative and voice of the Technologians</span>
+          <span className="font-serif text-2xl lg:text-4xl font-bold">FOR THE TECHNOLOGIANS, ALWAYS</span>
+          <span className="text-md md:text-lg lg:text-xl">The sole representative and voice of the Technologians</span>
         </div>
-        <Button variant="default">
+        <Button variant="default" className="w-fit">
           Learn more
           <ArrowRight />
         </Button>

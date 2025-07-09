@@ -110,6 +110,10 @@
     @apply bg-gradient-to-tr from-maroon to-maroon-light;
   }
 
+  .bg-gold_gradient {
+    @apply bg-gradient-to-tr from-gold-dark to-gold;
+  }
+
   /* Minimal, invisible background scrollbar */
   .scrollbar-thin::-webkit-scrollbar {
     background: transparent;
