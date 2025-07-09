@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import { CommissionModel } from "@/backend/models/CommissionModel";
+import { CommissionModel } from "@/backend/models/commissionModel";
 
 /**
  * REPOSITORIES directly talk to the database.
@@ -8,7 +8,10 @@ import { CommissionModel } from "@/backend/models/CommissionModel";
  */
 
 export async function getAllCommissions(): Promise<CommissionModel[]> {
-  const { data, error } = await supabase.from("commissions").select("*");
+  const { data, error } = await supabase
+    .from("commissions")
+    .select("*");
+    
   if (error) throw new Error(error.message);
   return data || [];
 }

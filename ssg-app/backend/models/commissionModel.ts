@@ -1,4 +1,4 @@
-// models/Commission.ts
+// models/commissionModel.ts
 
 /**
  * MODELS represent the shape of your data as code.
@@ -14,7 +14,8 @@ export type CommissionModel = {
   type: "CABINET-LEVEL COMMISSION"
     | "LEGISLATIVE COMMITTEE"
     | "CONSTITUTIONAL COMMISSION"
-    | "SUPREME COURT";
+    | "SUPREME COURT"
+    | "EXECOM";
   full_description?: string;
   brief_description?: string;
 };
