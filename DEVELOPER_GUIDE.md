@@ -2,16 +2,44 @@
 
 Welcome! This guide outlines how we build and design **consistently** across the project. It covers **colors, fonts, text sizes, components**, and **workflow practices**.
 
+
 > 📌 **Primary Reference**:  
 Always refer to the [Figma Design System](https://your-figma-link-here.com) — this is the **source of truth** for how components and pages should look. All color variables listed below are based on the **Figma design tokens**.
 
+# 🛠 Developer Guide: Design Consistency and Workflow
+
+Welcome! This guide outlines how we build and design **consistently** across the project. It covers **colors, fonts, text sizes, components**, and **workflow practices**.
+
 ---
 
-## 🎨 1. Colors
+## 🔃 Git Workflow
+
+- **Always checkout the `dev` branch** before starting work:
+    ```bash
+    git checkout dev
+    ```
+
+- Commit and push only to the **dev** branch:
+    ```bash
+    git add .
+    git commit -m "Your commit message"
+    git push origin dev
+    ```
+
+---
+
+## 🔑 Environment Setup
+
+- Create a .env.local file within `/ssg-app`.
+- Ask the project leader for the environment variables to be placed inside the .env.local file.
+
+---
+
+## 🎨 Colors
 
 **Use ONLY these CSS variables for colors (defined in Figma and Tailwind config):**
 
-```css
+```
 --color-maroon: var(--maroon);
 --color-maroon-light: var(--maroon-light);
 --color-light-neutral: var(--light-neutral);
@@ -41,7 +69,7 @@ Always refer to the [Figma Design System](https://your-figma-link-here.com) — 
 ```
 
 ---
-## 🅰️ 2. Fonts
+## 🅰️ Fonts
 
 **Use ONLY these CSS variables for fonts (defined in Figma and Tailwind config):**
 
@@ -54,7 +82,7 @@ Always refer to the [Figma Design System](https://your-figma-link-here.com) — 
 - Use `--font-sans for body text`.
 
 ---
-## 🔤 3. Text Sizes
+## 🔤 Text Sizes
 **Use ONLY these Tailwind CSS text size classes:**
 - `text-xs`
 - `text-sm`
@@ -68,7 +96,7 @@ Always refer to the [Figma Design System](https://your-figma-link-here.com) — 
 Visit the [Tailwind Typography documentation](https://tailwindcss.com/docs/font-size) for more details.
 
 ---
-## 📐 4. Components
+## 📐 Components
 
 **Always use Tailwind CSS for styling.**
 This project uses shadcn/ui components stored in
@@ -88,7 +116,7 @@ Do you need a component? → Yes
 🔁 **Figma** remains the design guide when modifying or creating components.
 
 ---
-## 🗂 5. Page-Specific Components
+## 🗂 Page-Specific Components
 For every route in `app/`, if a page needs its own component(s), create a local component directory under /components.
 
 Example:
@@ -97,14 +125,14 @@ Example:
 - Create: `components/Sessions/SessionCard.tsx`
 
 ---
-## 🔃 6. Git Workflow
+## 🔃 Git Workflow
 - Always commit to the `dev` branch.
 - When done with a feature, open a pull request.
 - Do not open a PR for every commit. A feature may (and often should) have multiple commits.
 - Write clear, descriptive commit messages (e.g., feat: add session card for session overview page).
 
 ---
-## 🙌 7. Communication & Ownership
+## 🙌 Communication & Ownership
 - Trust your instincts. If something feels off — ask, clarify, or propose a solution.
 - Initiatives are welcome — just inform the team when pushing changes.
 - Clarity and communication are part of the process, not exceptions.
