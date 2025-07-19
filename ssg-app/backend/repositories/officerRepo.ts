@@ -14,15 +14,13 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     firstname,
     lastname,
     position,
-    commissionId,
     commissions (
       id,
       name,
       initials,
       type,
       brief_description,
-      full_description,
-      created_at
+      full_description
     )
   `);
   
@@ -32,7 +30,7 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     firstname: officer.firstname,
     lastname: officer.lastname,
     position: officer.position,
-    commissionId: officer.commissionId, // optional
+    // commissionId: officer.commissionId, // optional
     commission: officer.commissions
   }));
 }

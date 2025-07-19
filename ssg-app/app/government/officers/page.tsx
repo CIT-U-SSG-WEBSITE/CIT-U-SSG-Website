@@ -9,6 +9,7 @@ import OfficersLoading from "@/components/Officers/OfficersLoading"
 import type { OfficerModel } from "@/backend/models/officerModel"
 import type { CommissionModel } from "@/backend/models/commissionModel"
 
+
 export default function Page() {
   const [officers, setOfficers] = useState<OfficerModel[]>([])
   const [commissions, setCommissions] = useState<CommissionModel[]>([])

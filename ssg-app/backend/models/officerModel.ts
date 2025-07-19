@@ -12,7 +12,7 @@ export type OfficerModel = {
   firstname: string;
   lastname: string;
   position: string;
-  commissionId: string;
+  // commissionId: string;
   
   // navigation attribute: helpful to quickly get the commission of the officer
   commission: CommissionModel;
