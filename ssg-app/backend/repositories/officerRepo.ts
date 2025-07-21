@@ -15,16 +15,16 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     lastname,
     position,
     commissionId,
-    commissions (
+    commissions:commissionId (
       id,
       name,
       initials,
       type,
       brief_description,
-      full_description,
-      created_at
+      full_description
     )
-  `);
+  `).eq('commissions.type', 'EXECOM')
+    .not('commissionId', 'is', null);
   
   if (error) throw new Error(error.message);
   

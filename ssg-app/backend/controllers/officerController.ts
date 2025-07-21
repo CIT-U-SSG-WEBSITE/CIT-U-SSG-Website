@@ -16,8 +16,8 @@ export async function fetchExecomOfficers() {
   const order = [
     "President",
     "Vice President",
-    "Secretary-General",
-    "Treasurer-General",
+    "Secretary General",
+    "Treasurer General",
     "Executive Auditor"
   ];
   

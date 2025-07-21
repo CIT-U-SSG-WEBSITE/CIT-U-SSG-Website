@@ -15,6 +15,7 @@ function MeetTheAdministration() {
   useEffect(() => {
     fetchExecomOfficers().then(setOfficers);
   }, []);
+  console.log(officers);
   
   // set the count of officers to display based on screen size
   let officerCount : number;
