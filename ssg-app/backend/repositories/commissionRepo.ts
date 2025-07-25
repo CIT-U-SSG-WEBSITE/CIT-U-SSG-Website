@@ -15,3 +15,25 @@ export async function getAllCommissions(): Promise<CommissionModel[]> {
   if (error) throw new Error(error.message);
   return data || [];
 }
+
+export async function getCommissionsById(id: string): Promise<CommissionModel> {
+  const { data, error } = await supabase
+    .from("commissions")
+    .select("*")
+    .eq("id", id)
+    .single();
+    
+  if (error) throw new Error(error.message);
+  return data || null;
+}
+
+export async function getCommissionByInitials(initials: string): Promise<CommissionModel> {
+  const { data, error } = await supabase
+    .from("commissions")
+    .select("*")
+    .eq("initials", initials)
+    .single();
+    
+  if (error) throw new Error(error.message);
+  return data || [];
+}
