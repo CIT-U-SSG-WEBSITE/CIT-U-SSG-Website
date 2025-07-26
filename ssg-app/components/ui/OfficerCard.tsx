@@ -11,8 +11,8 @@ function OfficerCard({ officer, isMobile }: Props) {
       <div
         key={`${officer.firstname} ${officer.lastname}`}
         className="w-full rounded-lg bg-near-white flex gap-4 py-3 px-4 items-center border border-light-neutral">
-        <div className="flex h-12 w-12 justify-center items-center rounded-full bg-maroon overflow-hidden">
-          <img src="/zeth.png" alt="officer photo" className="h-full w-full object-cover rounded-full" />
+        <div className="flex h-12 w-12 justify-center items-start rounded-full bg-maroon_gradient overflow-hidden">
+          <img src={`api/images?filename=${officer.photo}`} alt="officer photo" className="w-full object-cover rounded-full mt-1/2" />
         </div>
         <div className="flex flex-col">
           <span className="font-serif text-base font-bold text-dark-neutral">
@@ -30,7 +30,7 @@ function OfficerCard({ officer, isMobile }: Props) {
             src={`api/images?filename=${officer.photo}`}
             alt="officer photo"
             loading="lazy"
-            className="w-[90%] object-cover rounded-3xl mt-[-16px] xl:mt-2"
+            className="w-[90%] object-cover rounded-3xl mt-[-16px] md:mt-1 lg:mt-2"
           />
         </div>
         <div className="px-3 flex flex-col gap-1">

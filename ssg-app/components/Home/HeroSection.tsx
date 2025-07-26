@@ -15,11 +15,14 @@ function HeroSection() {
           <ArrowRight />
         </Button>
       </div>
-      <img
-        src="/cover.png"
-        alt="Artistic representation of the CIT University Supreme Student Government"
-        className="HERO_BANNER h-[420px] w-full rounded-3xl object-cover"
-      />
+      <div className="flex h-[420px] rounded-3xl object-cover w-full justify-center items-start overflow-hidden">
+        <img
+          src="/banner-ssg.jpg"
+          alt="officer photo"
+          loading="lazy"
+          className=" object-cover rounded-3xl"
+        />
+      </div>
     </section>
   );
 }

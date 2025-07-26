@@ -20,7 +20,7 @@ function MeetTheAdministration() {
   // set the count of officers to display based on screen size
   let officerCount : number;
   if (useMediaQuery({ maxWidth: 1280 })) {
-    officerCount = 3;
+    officerCount = 6;
   } else {
     officerCount = 5;
   }
@@ -42,7 +42,7 @@ function MeetTheAdministration() {
         </Button>
       </div>
       
-      <div className="flex gap-4 lg:gap-6 flex-col md:flex-row max-md:items-end">
+      <div className="flex md:grid xl:flex gap-4 lg:gap-6 max-md:flex-col grid-cols-3 xl:flex-row max-md:items-end">
         {officers.slice(0, officerCount).map((officer) =>
           <OfficerCard officer={officer} isMobile={isMobile} />
         )}
