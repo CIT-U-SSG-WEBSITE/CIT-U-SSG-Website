@@ -26,8 +26,8 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     firstname,
     lastname,
     position,
-    commissionId,
-    commissions:commissionId (
+    commission_id,
+    commissions:commission_id (
       id,
       name,
       initials,
@@ -43,7 +43,8 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     firstname: officer.firstname,
     lastname: officer.lastname,
     position: officer.position,
-    commissionId: officer.commissionId, // optional
+    photo: officer.photo, // optional
+    commissionId: officer.commission_id, // optional
     commission: officer.commissions
   }));
 }
@@ -68,8 +69,9 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
     firstname,
     lastname,
     position,
-    commissionId,
-    commissions:commissionId (
+    photo,
+    commission_id,
+    commissions:commission_id (
       id,
       name,
       initials,
@@ -77,7 +79,7 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
       brief_description,
       full_description
     )
-  `).eq('commissionId', commissionId);
+  `).eq('commission_id', commissionId);
   
   if (error) throw new Error(error.message);
   
@@ -85,7 +87,8 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
     firstname: officer.firstname,
     lastname: officer.lastname,
     position: officer.position,
-    commissionId: officer.commissionId, // optional
+    photo: officer.photo, // optional
+    commissionId: officer.commission_id, // optional
     commission: officer.commissions
   }));
 }

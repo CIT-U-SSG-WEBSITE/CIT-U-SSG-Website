@@ -1,6 +1,5 @@
 import React from 'react';
 import { OfficerModel } from "@/backend/models/officerModel";
-
 type Props = {
   officer: OfficerModel;
   isMobile: boolean;
@@ -26,11 +25,12 @@ function OfficerCard({ officer, isMobile }: Props) {
       </div>
     ) : (
       <div key={`${officer.firstname} ${officer.lastname}`} className="flex flex-col gap-4 w-full h-fit">
-        <div className="flex h-[256px] w-full justify-center items-center rounded-3xl bg-maroon_gradient">
+        <div className="flex h-[256px] w-full justify-center items-start rounded-3xl bg-maroon_gradient overflow-hidden">
           <img
-            src="/zeth.png"
+            src={`api/images?filename=${officer.photo}`}
             alt="officer photo"
-            className="h-full object-cover rounded-3xl"
+            loading="lazy"
+            className="w-[90%] object-cover rounded-3xl mt-[-16px] xl:mt-2"
           />
         </div>
         <div className="px-3 flex flex-col gap-1">
