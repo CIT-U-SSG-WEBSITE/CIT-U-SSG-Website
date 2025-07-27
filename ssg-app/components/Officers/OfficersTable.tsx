@@ -2,7 +2,7 @@
 
 import type { OfficerModel } from "@/backend/models/officerModel"
 import OfficerProfileCard from "@/components/Officers/OfficerProfileCard";
-import {useOfficerSearchStore} from "@/app/store/officerSearchStore";
+import {useOfficerSearchStore} from "@/store/officerSearchStore";
 
 interface OfficersTableProps {
   officers: OfficerModel[];

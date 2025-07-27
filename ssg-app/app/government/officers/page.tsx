@@ -4,6 +4,7 @@
   import OfficersTable from "@/components/Officers/OfficersTable"
   import type { OfficerModel } from "@/backend/models/officerModel"
   import type { CommissionModel } from "@/backend/models/commissionModel"
+  import {OfficersFilter} from "@/components/Officers/OfficersFilter";
   
   
   export default async function Page() {
@@ -13,7 +14,10 @@
     return (
       <div className="flex w-full h-fit min-h-screen bg-light-neutral">
         <div className="flex-1 max-w-5xl mx-auto">
-          <OfficersSearch commissions={commissions}/>
+          <div className="flex justify-between items-center gap-4 mb-10">
+            <OfficersSearch />
+            <OfficersFilter commissions={commissions}/>
+          </div>
           <OfficersTable officers={officers}/>
         </div>
       </div>
