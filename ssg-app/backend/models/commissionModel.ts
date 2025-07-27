@@ -11,6 +11,7 @@ export type CommissionModel = {
   created_at: string;
   name: string;
   initials: string;
+  photo: string;
   type: "CABINET-LEVEL COMMISSION"
     | "LEGISLATIVE COMMITTEE"
     | "CONSTITUTIONAL COMMISSION"

@@ -1,5 +1,6 @@
 import React from 'react';
 import { OfficerModel } from "@/backend/models/officerModel";
+import {UserRound as UserIcon} from "lucide-react";
 type Props = {
   officer: OfficerModel;
   isMobile: boolean;
@@ -25,14 +26,18 @@ function OfficerCard({ officer, isMobile }: Props) {
       </div>
     ) : (
       <div key={`${officer.firstname} ${officer.lastname}`} className="flex flex-col gap-4 w-full h-fit">
-        <div className="flex h-[256px] w-full justify-center items-start rounded-3xl bg-maroon_gradient overflow-hidden">
-          <img
-            src={`api/images?filename=${officer.photo}`}
-            alt="officer photo"
-            loading="lazy"
-            className="w-[90%] object-cover rounded-3xl mt-[-16px] md:mt-1 lg:mt-2"
-          />
-        </div>
+        {officer.photo ? (
+          <div className="flex h-[256px] w-full justify-center items-start rounded-3xl bg-maroon_gradient overflow-hidden">
+            <img
+              src={`/api/images?filename=${officer.photo}`}
+              alt="officer photo"
+              className="w-full object-cover rounded-full mt-1/2" />
+          </div>
+        ) : (
+          <div className="flex h-[256px] w-full  px-3 justify-center items-center rounded-3xl bg-maroon_gradient overflow-hidden">
+            <UserIcon className="w-full h-full text-light-neutral/80" strokeWidth={1}/>
+          </div>
+        )}
         <div className="px-3 flex flex-col gap-1">
           <span className="font-serif font-bold">{officer.position}</span>
           <span className="text-sm">{officer.firstname} {officer.lastname}</span>
