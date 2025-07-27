@@ -16,7 +16,7 @@ const links : linkPair[] = [
 
 function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex flex-col lg:flex-row w-full px-4 md:px-8 lg:px-16 gap-8 border">
+    <div className="flex flex-col lg:flex-row w-full px-4 md:px-8 mb-20 md:mb-30 lg:mb-40 lg:px-16 gap-8 border">
       <SideNavigation links={links} />
       <section className="flex justify-center items-center w-full h-full">
         <div className="flex max-w-[920px] grow">

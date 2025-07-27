@@ -12,14 +12,14 @@ function OfficerCard({ officer, isMobile }: Props) {
         key={`${officer.firstname} ${officer.lastname}`}
         className="w-full rounded-lg bg-near-white flex gap-4 py-3 px-4 items-center border border-light-neutral">
         <div className="flex h-12 w-12 justify-center items-start rounded-full bg-maroon_gradient overflow-hidden">
-          <img src={`api/images?filename=${officer.photo}`} alt="officer photo" className="w-full object-cover rounded-full mt-1/2" />
+          <img src={`/api/images?filename=${officer.photo}`} alt="officer photo" className="w-full object-cover rounded-full mt-1/2" />
         </div>
         <div className="flex flex-col">
           <span className="font-serif text-base font-bold text-dark-neutral">
             Hon. {officer.firstname} {officer.lastname}
           </span>
           <span className="font-sans text-sm text-dark-neutral opacity-70">
-            {officer.position} • {officer.commission.name}
+            {officer.position} • {officer.commission.initials}
           </span>
         </div>
       </div>
