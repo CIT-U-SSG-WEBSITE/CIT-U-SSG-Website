@@ -1,12 +1,20 @@
+"use client"
+
 import React from 'react';
 import { OfficerModel } from "@/backend/models/officerModel";
 import {UserRound as UserIcon} from "lucide-react";
+import {useMediaQuery} from "react-responsive";
 type Props = {
   officer: OfficerModel;
-  isMobile: boolean;
+  isMobile?: boolean;
 }
 
-function OfficerCard({ officer, isMobile }: Props) {
+function OfficerCard({ officer, isMobile: isMobileProp }: Props) {
+  // Use the provided isMobile prop if available, otherwise use mediaQuery
+  const isMobile = typeof isMobileProp === "boolean"
+    ? isMobileProp
+    : useMediaQuery({ maxWidth: 768 });
+  
   return (
     (isMobile) ? (
       <div

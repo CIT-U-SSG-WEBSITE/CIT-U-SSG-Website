@@ -21,12 +21,12 @@ async function Page() {
   
   return (
     <div className="flex flex-col w-full h-fit gap-16">
-      <div className="flex h-[420px] rounded-3xl object-cover w-full justify-center items-start overflow-hidden">
+      <div className="flex h-[240px] md:h-[360px] lg:h-[420px] rounded-3xl object-cover w-full justify-center items-start overflow-hidden bg-near-white">
         <img
           src="/banner-executive.png"
           alt="officer photo"
           loading="lazy"
-          className=" object-cover rounded-3xl"
+          className="h-full w-full  object-cover rounded-3xl"
         />
       </div>
       

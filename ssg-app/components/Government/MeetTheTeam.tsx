@@ -1,9 +1,7 @@
-"use client"
 
-import React, {useEffect, useState} from 'react';
-import {Button} from "@/components/ui/Button";
+
+import React from 'react';
 import {OfficerModel} from "@/backend/models/officerModel";
-import {useMediaQuery} from "react-responsive";
 import OfficerCard from "@/components/ui/OfficerCard";
 
 interface Props {
@@ -15,9 +13,6 @@ interface Props {
 export default function MeetTheTeam({ officers,
                                  title,
                                  subtitle }: Props) {
-  // check is mobile
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-  
   return (
     <section className="w-full max-w-[1320px] flex flex-col gap-5">
       <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 lg:gap-0">
@@ -29,7 +24,7 @@ export default function MeetTheTeam({ officers,
       
       <div className="grid grid-cols-4 gap-x-4 gap-y-6">
         {officers.map((officer) =>
-          <OfficerCard officer={officer} isMobile={isMobile} />
+          <OfficerCard officer={officer} />
         )}
       </div>
     </section>
