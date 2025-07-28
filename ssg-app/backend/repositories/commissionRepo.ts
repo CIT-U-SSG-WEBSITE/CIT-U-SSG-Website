@@ -16,7 +16,17 @@ export async function getAllCommissions(): Promise<CommissionModel[]> {
   return data || [];
 }
 
-export async function getCommissionsById(id: string): Promise<CommissionModel> {
+export async function getCommissionsByType(type: string): Promise<CommissionModel[]> {
+  const { data, error } = await supabase
+    .from("commissions")
+    .select("*")
+    .eq("type", type);
+  
+  if (error) throw new Error(error.message);
+  return data || [];
+}
+
+export async function getCommissionById(id: string): Promise<CommissionModel> {
   const { data, error } = await supabase
     .from("commissions")
     .select("*")
