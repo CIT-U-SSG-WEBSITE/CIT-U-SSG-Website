@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import ProjectCard from "../../../components/Home/ProjectCard";
-import SearchBar from "../../../components/Home/SearchBar";
+import SearchBar from "../../../components/Actions/SearchBar";
 
 type ProjectCardProps = {
   title: string;
