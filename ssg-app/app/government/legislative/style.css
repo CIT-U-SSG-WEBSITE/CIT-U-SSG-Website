@@ -1,0 +1,197 @@
+:root {
+  --color-maroon: #750000;
+  --color-maroon-light: #a63d3d;
+  --color-light-neutral: #f8f8f8;
+  --color-dark-neutral: #222222;
+  --color-gold: #ffc700;
+  --color-gold-dark: #b48a00;
+  --color-near-white: #fcfcfc;
+
+  --font-sans: 'Open Sans', sans-serif;
+  --font-serif: 'Merriweather', serif;
+}
+
+.legislative-banner {
+  width: 920px;
+  height: 380px;
+  border-radius: 24px;
+  background: var(--color-maroon); 
+  margin: 0 auto 40px auto;
+  overflow: hidden;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+body {
+  background-color: var(--color-light-neutral);
+  font-family: var(--font-sans);
+  color: var(--color-dark-neutral);
+}
+
+.section {
+  width: 1440px;
+  padding-left: 48px;
+  padding-right: 64px;
+  margin: 0 auto;
+  background-color: var(--color-light-neutral);
+}
+
+.page-title {
+  font-size: 1.875rem;
+  font-family: var(--font-serif);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-family: var(--font-serif);
+  margin-top: 40px;
+  margin-bottom: 0px;
+}
+
+.section-description {
+  font-size: 0.875rem;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+
+.legislative-core-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.core-card-wrapper {
+  text-align: left;
+  margin: 0 1rem;
+}
+
+.core-card {
+  background: linear-gradient(180deg, #893433 0%, #6C0302 100%);
+  border-radius: 12px;
+  padding: 16px;
+  width: 227px;
+  height: 289px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.core-image {
+  width: 227px;
+  height: 289px;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 1;
+  transform: rotate(0deg);
+
+}
+
+
+.core-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: var(--color-dark-neutral);
+  text-align: left;
+}
+
+.core-name {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--color-dark-neutral);
+  text-align: left;
+}
+
+
+.committees {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.committee-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--color-near-white);
+  border-radius: 24px;
+  padding: 24px;
+  width: 920px;
+  min-height: 133px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.committee-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-right: 16px;
+}
+
+.committee-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  max-width: 800px;
+  color: var(--color-dark-neutral);
+}
+
+.committee-text strong {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.committee-description {
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.4;
+  font-size: 0.875rem;
+  max-width: 100%;
+}
+
+.arrow {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-maroon);
+}
+
+
+.bg-maroon_gradient {
+  background: linear-gradient(to top right, var(--color-maroon), var(--color-maroon-light));
+}
+
+.bg-gold_gradient {
+  background: linear-gradient(to top right, var(--color-gold-dark), var(--color-gold));
+}
