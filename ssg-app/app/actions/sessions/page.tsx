@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import SessionCard from "../../../components/Home/SessionCard";
-import SearchBar from "../../../components/Home/SearchBar";
+import SessionCard from "../../../components/Actions/SessionCard";
+import SearchBar from "../../../components/Actions/SearchBar";
 
 type SessionCardProps = {
   title: string;
