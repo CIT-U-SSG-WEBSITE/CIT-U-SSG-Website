@@ -7,7 +7,7 @@ export type ResolutionModel = {
   id: string;
   series?: string;
   number?: number;
-  title?: string;
+  title: string;
   body?: string;
   session_id?: string;
   is_adopted?: boolean;

@@ -9,6 +9,7 @@ import {CommissionModel} from "@/backend/models/commissionModel";
  */
 
 export type OfficerModel = {
+  id: string;
   firstname: string;
   lastname: string;
   position: string;

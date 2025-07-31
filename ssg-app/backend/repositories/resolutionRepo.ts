@@ -2,6 +2,7 @@
 
 import { supabase } from "@/lib/supabase";
 import { ResolutionModel } from "@/backend/models/resolutionModel";
+import {OfficerModel} from "@/backend/models/officerModel";
 
 /**
  * REPOSITORIES directly talk to the database.
@@ -39,4 +40,36 @@ export async function insertResolution(resolution: ResolutionModel): Promise<Res
     disagree_vote: data.disagree_vote,
     abstain_vote: data.abstain_vote
   };
+}
+
+export async function getAllResolutions(): Promise<ResolutionModel[]> {
+  const { data, error } = await supabase
+    .from("resolution")
+    .select(`
+      id,
+      series,
+      number,
+      title,
+      body,
+      session_id,
+      is_adopted,
+      agree_vote,
+      disagree_vote,
+      abstain_vote
+    `);
+  
+  if (error) throw new Error(error.message);
+  
+  return (data || []).map((res: any) => ({
+    id: res.id,
+    series: res.series,
+    number: res.number,
+    title: res.title,
+    body: res.body,
+    session_id: res.session_id,
+    is_adopted: res.is_adopted,
+    agree_vote: res.agree_vote,
+    disagree_vote: res.disagree_vote,
+    abstain_vote: res.abstain_vote
+  }));
 }

@@ -114,6 +114,19 @@ export async function fetchExecomOfficers() {
 }
 
 export async function fetchLegislativeOfficers() {
+  const positions = [
+    "ARCH Representative", "CHE Representative", "CE Representative", "CASE Representative",
+    "CCJ Representative", "CMBA Representative", "CNAHS Representative", "CPE Representative",
+    "CS Representative", "EE Representative", "ECE Representative", "IE Representative",
+    "IT Representative", "ME Representative", "EM Representative"
+  ];
+  
   // group and sort the officer.position, then by officer.lastname
-  return await getOfficersByPosition("Representative");
+  const representatives = [];
+  for (const position of positions) {
+    const officers = await getOfficersByPosition(position);
+    representatives.push(...officers.sort((a, b) => (a.lastname ?? "").localeCompare(b.lastname ?? "")));
+  }
+  
+  return representatives;
 }

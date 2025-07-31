@@ -23,6 +23,7 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
   const { data, error } = await supabase
     .from("officers")
     .select(`
+    id,
     firstname,
     lastname,
     position,
@@ -41,6 +42,7 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
   if (error) throw new Error(error.message);
   
   return (data || []).map((officer: any) => ({
+    id: officer.id,
     firstname: officer.firstname,
     lastname: officer.lastname,
     position: officer.position,
@@ -67,6 +69,7 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
   const { data, error } = await supabase
     .from("officers")
     .select(`
+    id,
     firstname,
     lastname,
     position,
@@ -85,6 +88,7 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
   if (error) throw new Error(error.message);
   
   return (data || []).map((officer: any) => ({
+    id: officer.id,
     firstname: officer.firstname,
     lastname: officer.lastname,
     position: officer.position,
@@ -111,6 +115,7 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
   const { data, error } = await supabase
     .from("officers")
     .select(`
+    id,
     firstname,
     lastname,
     position,
@@ -124,11 +129,15 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
       brief_description,
       full_description
     )
-  `);
+  `).eq('position', position);
   
-  if (error) throw new Error(error.message);
+  if (error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
   
   return (data || []).map((officer: any) => ({
+    id: officer.id,
     firstname: officer.firstname,
     lastname: officer.lastname,
     position: officer.position,
