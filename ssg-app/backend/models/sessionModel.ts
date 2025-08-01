@@ -8,6 +8,7 @@ export type SessionModel = {
   id: string;
   type: SessionType;
   number: number;
+  numberOrdinal: string; // e.g. 1st, 2nd, 3rd
   livestream?: string | null;
   date: string;
   summary?: string | null;
@@ -22,4 +23,3 @@ export type SessionModel = {
   agenda: SessionAgendaModel[];
   attendance: SessionAttendanceModel[];
 };
-

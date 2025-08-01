@@ -36,6 +36,20 @@ export async function getSessionByNumberAndType(number: number, type: SessionTyp
   return data ? mapSessionRecordToModel(data) : null;
 }
 
+function getOrdinal(n: number): string {
+  const s = ["th", "st", "nd", "rd"], v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  });
+}
+
 function mapSessionRecordToModel(record: any): SessionModel {
   // Map agenda with session number and type
   const agenda: SessionAgendaModel[] = (record.session_agenda || []).map((a: any) => ({
@@ -57,8 +71,9 @@ function mapSessionRecordToModel(record: any): SessionModel {
     id: record.id,
     type: record.type,
     number: record.number,
+    numberOrdinal: getOrdinal(record.number),
     livestream: record.livestream,
-    date: record.date,
+    date: formatDate(record.date),
     summary: record.summary,
     present: record.present,
     excused: record.excused,
@@ -70,4 +85,3 @@ function mapSessionRecordToModel(record: any): SessionModel {
     attendance,
   };
 }
-

@@ -12,7 +12,7 @@ type ProjectCardProps = {
   sessionType: string;
 };
 
-export default function SessionCard({
+export default function ProjectCard({
   title,
   description,
   lead,
