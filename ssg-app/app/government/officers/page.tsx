@@ -12,14 +12,12 @@
     const commissions : CommissionModel[] = await fetchAllCommissions();
   
     return (
-      <div className="flex w-full h-fit min-h-screen bg-light-neutral">
-        <div className="flex-1 max-w-5xl mx-auto">
-          <div className="flex justify-between items-center gap-4 mb-10">
-            <OfficersSearch />
-            <OfficersFilter commissions={commissions}/>
-          </div>
-          <OfficersTable officers={officers}/>
+      <div className="flex flex-col w-full h-fit min-h-screen bg-light-neutral">
+        <div className="flex justify-between items-center gap-4 mb-10">
+          <OfficersSearch />
+          <OfficersFilter commissions={commissions}/>
         </div>
+        <OfficersTable officers={officers}/>
       </div>
     )
   }

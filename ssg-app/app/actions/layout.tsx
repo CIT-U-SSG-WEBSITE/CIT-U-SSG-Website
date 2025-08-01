@@ -18,20 +18,11 @@ const links: linkPair[] = [
 ];
 
 function Layout({ children }: LayoutProps) {
-  // Modified border for sessions only because it was disrupting/overlapping the styles of the page
-  const pathname = usePathname();
-  const noBorderRoutes = ["/actions/sessions"];
-  const isBorderless = noBorderRoutes.includes(pathname);
-
   return (
     <div className="flex flex-col lg:flex-row w-full px-4 md:px-8 mb-20 md:mb-30 lg:mb-40 lg:px-16 gap-8">
       <SideNavigation links={links} />
-      <section className="flex justify-center items-center w-full h-full">
-        <div
-          className={`flex max-w-[920px] grow ${
-            isBorderless ? "border-none" : "border border-dark-neutral"
-          }`}
-        >
+      <section className="flex justify-center items-center w-full h-full lg:ml-50">
+        <div className="flex max-w-[960px] grow">
           {children}
         </div>
       </section>

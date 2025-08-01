@@ -17,14 +17,12 @@ export default async function Page() {
   ]
   
   return (
-    <div className="flex w-full h-fit min-h-screen bg-light-neutral">
-      <div className="flex-1 max-w-5xl mx-auto">
-        <div className="flex justify-between items-center gap-4 mb-10">
-          <SessionSearch />
-          <SessionFilter sessionTypes={sessionTypes} />
-        </div>
-        <SessionTable sessions={sessions} />
+    <div className="flex flex-col w-full h-fit min-h-screen bg-light-neutral">
+      <div className="flex justify-between items-center gap-4 mb-10">
+        <SessionSearch />
+        <SessionFilter sessionTypes={sessionTypes} />
       </div>
+      <SessionTable sessions={sessions} />
     </div>
   );
 }

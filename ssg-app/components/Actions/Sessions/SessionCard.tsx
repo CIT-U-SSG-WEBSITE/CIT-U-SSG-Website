@@ -24,9 +24,7 @@ export default function SessionCard({session}: Props) {
       <div className="flex flex-col justify-between flex-grow pr-[10px]">
         <div>
           <h2
-            className="text-[24px] font-bold font-serif"
-            style={{ color: "var(--color-dark-neutral)" }}
-          >
+            className="text-[24px] font-bold font-serif text-dark-neutral">
             {session.numberOrdinal} {session.type.charAt(0) + session.type.slice(1).toLowerCase()} Session
           </h2>
           <p
@@ -42,7 +40,7 @@ export default function SessionCard({session}: Props) {
         </div>
 
         {/* Learn More */}
-        <Link href="#">
+        <Link href={`/actions/sessions/${session.id}`}>
           <Button variant="ghost" className="!px-0">
             Learn more
             <ArrowRight />
