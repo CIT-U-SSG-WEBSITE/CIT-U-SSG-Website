@@ -1,8 +1,6 @@
 import React from 'react';
-import {fetchCommissionsFiltered} from "@/backend/controllers/commissionController";
 import {fetchOfficersByCommission} from "@/backend/controllers/officerController";
 import MeetTheTeam from "@/components/Government/MeetTheTeam";
-import CommissionsList from "@/components/Government/CommissionsList";
 
 async function Page() {
   const order = [

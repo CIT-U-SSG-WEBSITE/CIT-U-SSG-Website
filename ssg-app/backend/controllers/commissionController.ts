@@ -1,5 +1,4 @@
 import {getAllCommissions, getCommissionsByType} from "@/backend/repositories/commissionRepo";
-import {CommissionModel} from "@/backend/models/commissionModel";
 
 /**
  * CONTROLLERS *control* how data is handled after it’s retrieved by the repository.

@@ -2,7 +2,6 @@
 
 import { supabase } from "@/lib/supabase";
 import { ResolutionModel } from "@/backend/models/resolutionModel";
-import {OfficerModel} from "@/backend/models/officerModel";
 
 /**
  * REPOSITORIES directly talk to the database.

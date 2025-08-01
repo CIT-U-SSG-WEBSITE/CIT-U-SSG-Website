@@ -61,7 +61,6 @@ export async function fetchAllOfficers() {
   const commissioners = otherOfficers
     .filter(officer => officer.position === "Commissioner")
     .sort((a, b) => a.commission.initials.localeCompare(b.commission.initials) || (a.lastname ?? "").localeCompare(b.lastname ?? ""));
-  ;
   if (commissioners.length > 0) {
     orderedOfficers.push(...commissioners);
   }
