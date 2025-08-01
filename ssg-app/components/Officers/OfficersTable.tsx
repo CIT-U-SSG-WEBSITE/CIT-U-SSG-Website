@@ -6,11 +6,11 @@ import OfficerProfileCard from "@/components/Officers/OfficerProfileCard"
 import { useOfficerSearchStore } from "@/store/officerSearchStore"
 import { useOfficerCommissionFilterStore } from "@/store/officerCommissionFilterStore"
 
-interface OfficersTableProps {
+interface Props {
   officers: OfficerModel[]
 }
 
-export default function OfficersTable({ officers }: OfficersTableProps) {
+export default function OfficersTable({ officers }: Props) {
   // Zustand stores for search and commission filters
   const searchTerm = useOfficerSearchStore(state => state.search.trim().toLowerCase())
   const checkedCommissionIds = useOfficerCommissionFilterStore(state => state.checkedCommissionIds)
