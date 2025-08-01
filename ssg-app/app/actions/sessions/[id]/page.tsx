@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {JSX} from 'react';
 import { fetchSessionById } from "@/backend/controllers/sessionController";
 import {SessionModel} from "@/backend/models/sessionModel";
 import SessionSummary from "@/components/Actions/Sessions/SessionSummary";
-import SessionTabMenu from "@/components/Actions/Sessions/SessionTabMenu";
+import SessionTabMenu from "@/components/Actions/Sessions/id/SessionTabMenu";
+import SessionAgenda from "@/components/Actions/Sessions/id/SessionAgenda";
+import SessionResolutions from "@/components/Actions/Sessions/id/SessionResolutions";
+import SessionAttendance from "@/components/Actions/Sessions/id/SessionAttendance";
+import SessionTabSection from "@/components/Actions/Sessions/id/SessionTabSection";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const session : SessionModel | null = await fetchSessionById(params.id);
-  const tabs : string[] = ["Agenda", "Resolutions", "Attendance"];
+  
+  const tabs : Record<string, JSX.Element> = {
+    "Agenda": <SessionAgenda agenda={session?.agenda} />,
+    "Resolutions": <SessionResolutions />,
+    "Attendance": <SessionAttendance attendance={session?.attendance} />
+  }
   
   if (!session) {return <div>Session not found.</div>;}
   
@@ -21,7 +30,8 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
         <SessionSummary summary={session.summary} />
       </div>
-      <SessionTabMenu tabs={tabs} />
+      <SessionTabMenu tabs={Object.keys(tabs)} />
+      <SessionTabSection tabs={tabs} />
     </div>
   );
 }

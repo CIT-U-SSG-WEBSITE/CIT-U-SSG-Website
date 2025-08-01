@@ -23,7 +23,7 @@ function SideNavigation({links}: Props) {
   const isTablet = useMediaQuery({maxWidth: 768});
   
   return (
-    <aside className="lg:fixed">
+    <aside className="lg:pr-8">
       {isTablet ? (
         <NavigationMenu>
           <NavigationMenuItem className="list-none">
