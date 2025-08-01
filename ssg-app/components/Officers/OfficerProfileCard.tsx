@@ -16,7 +16,7 @@ function OfficerProfileCard({ officer }: Props) {
           <img
             src={`/api/images?filename=${officer.photo}`}
             alt="officer photo"
-            className="w-full object-cover rounded-full mt-1/2" />
+            className="w-full object-cover mt-1/2" />
         </div>
         ) : (
         <div className="flex h-20 w-20 pt-2 px-3 justify-center items-center rounded-3xl bg-maroon_gradient overflow-hidden">

@@ -1,4 +1,5 @@
 import {getAllCommissions, getCommissionsByType} from "@/backend/repositories/commissionRepo";
+import {CommissionModel} from "@/backend/models/commissionModel";
 
 /**
  * CONTROLLERS *control* how data is handled after it’s retrieved by the repository.
@@ -6,8 +7,12 @@ import {getAllCommissions, getCommissionsByType} from "@/backend/repositories/co
  * before it's sent to the UI or another process.
  */
 
-export async function fetchCommissionsFiltered(type: string) {
-  return await getCommissionsByType(type);
+export async function fetchCommissionsFiltered(type: string, excludeInitials?: string[]) {
+  const commissions = await getCommissionsByType(type);
+  if (excludeInitials && excludeInitials.length > 0) {
+    return commissions.filter(c => !excludeInitials.includes(c.initials));
+  }
+  return commissions;
 }
 
 export async function fetchAllCommissions() {

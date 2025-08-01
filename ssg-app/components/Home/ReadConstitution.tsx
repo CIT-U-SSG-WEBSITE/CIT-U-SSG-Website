@@ -19,7 +19,7 @@ function ReadConstitution() {
           </Button>
         </div>
         <img
-          src="/cover.png"
+          src="/banner-constitution.png"
           alt="Artistic representation of the CIT University Supreme Student Government"
           className="HERO_BANNER h:[200px] lg:h-full w-full lg:w-1/2 rounded-3xl object-cover"
         />

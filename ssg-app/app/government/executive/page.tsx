@@ -32,7 +32,7 @@ async function Page() {
       
       <div className="flex flex-col gap-5 w-full">
         <div className="flex flex-col w-full gap-1">
-          <span className="font-serif text-3xl font-bold">Executive Branch</span>
+          <h1 className="font-serif text-3xl font-bold">Executive Branch</h1>
           <span className="text-lg">Leading with Vision and Action</span>
         </div>
         <p>The Executive Branch, led by the SSG President, drives the Supreme Student Government’s initiatives. Supported by its <i>commissions</i>, it turns student concerns into action, oversees programs, and works with all sectors to uphold student welfare through responsive leadership and service.</p>
