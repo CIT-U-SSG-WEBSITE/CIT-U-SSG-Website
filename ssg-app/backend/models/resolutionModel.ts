@@ -20,4 +20,7 @@ export type ResolutionModel = {
   
   author: OfficerModel;
   co_authors?: OfficerModel[];
+  
+  session_number?: number;
+  session_type?: string;
 };

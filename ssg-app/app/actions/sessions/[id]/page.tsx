@@ -4,7 +4,7 @@ import {SessionModel} from "@/backend/models/sessionModel";
 import SessionSummary from "@/components/Actions/Sessions/SessionSummary";
 import SessionTabMenu from "@/components/Actions/Sessions/id/SessionTabMenu";
 import SessionAgenda from "@/components/Actions/Sessions/id/agenda/SessionAgenda";
-import SessionResolutions from "@/components/Actions/Sessions/id/SessionResolutions";
+import SessionResolutions from "@/components/Actions/Sessions/id/resolutions/SessionResolutions";
 import SessionAttendance from "@/components/Actions/Sessions/id/attendance/SessionAttendance";
 import SessionTabSection from "@/components/Actions/Sessions/id/SessionTabSection";
 import {ResolutionModel} from "@/backend/models/resolutionModel";
