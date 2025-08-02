@@ -8,7 +8,7 @@ import { OfficerModel } from "@/backend/models/officerModel";
 export async function getAllSessions(): Promise<SessionModel[]> {
   const { data, error } = await supabase
     .from("session")
-    .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commissions:commission_id(*)))`);
+    .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commission:commission_id(*)))`);
  
   if (error) throw new Error(error.message);
   
@@ -18,7 +18,7 @@ export async function getAllSessions(): Promise<SessionModel[]> {
 export async function getSessionById(id: string): Promise<SessionModel | null> {
   const { data, error } = await supabase
     .from("session")
-    .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commissions:commission_id(*)))`)
+    .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commission:commission_id(*)))`)
     .eq("id", id)
     .single();
   if (error) throw new Error(error.message);
@@ -28,7 +28,7 @@ export async function getSessionById(id: string): Promise<SessionModel | null> {
 export async function getSessionByNumberAndType(number: number, type: SessionType): Promise<SessionModel | null> {
   const { data, error } = await supabase
     .from("session")
-    .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commissions:commission_id(*)))`)
+    .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commission:commission_id(*)))`)
     .eq("number", number)
     .eq("type", type)
     .single();

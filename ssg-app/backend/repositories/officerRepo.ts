@@ -29,7 +29,7 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     position,
     photo,
     commission_id,
-    commissions:commission_id (
+    commission:commission_id (
       id,
       name,
       initials,
@@ -48,7 +48,7 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     position: officer.position,
     photo: officer.photo, // optional
     commissionId: officer.commission_id, // optional
-    commission: officer.commissions
+    commission: officer.commission
   }));
 }
 
@@ -75,7 +75,7 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
     position,
     photo,
     commission_id,
-    commissions:commission_id (
+    commission:commission_id (
       id,
       name,
       initials,
@@ -94,7 +94,7 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
     position: officer.position,
     photo: officer.photo, // optional
     commissionId: officer.commission_id, // optional
-    commission: officer.commissions
+    commission: officer.commission
   }));
 }
 
@@ -121,7 +121,7 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
     position,
     photo,
     commission_id,
-    commissions:commission_id (
+    commission:commission_id (
       id,
       name,
       initials,
@@ -143,6 +143,6 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
     position: officer.position,
     photo: officer.photo, // optional
     commissionId: officer.commission_id, // optional
-    commission: officer.commissions
+    commission: officer.commission
   }));
 }

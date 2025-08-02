@@ -5,7 +5,7 @@ import SessionSummary from "@/components/Actions/Sessions/SessionSummary";
 import SessionTabMenu from "@/components/Actions/Sessions/id/SessionTabMenu";
 import SessionAgenda from "@/components/Actions/Sessions/id/SessionAgenda";
 import SessionResolutions from "@/components/Actions/Sessions/id/SessionResolutions";
-import SessionAttendance from "@/components/Actions/Sessions/id/SessionAttendance";
+import SessionAttendance from "@/components/Actions/Sessions/id/attendance/SessionAttendance";
 import SessionTabSection from "@/components/Actions/Sessions/id/SessionTabSection";
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const tabs : Record<string, JSX.Element> = {
     "Agenda": <SessionAgenda agenda={session?.agenda} />,
     "Resolutions": <SessionResolutions />,
-    "Attendance": <SessionAttendance attendance={session?.attendance} />
+    "Attendance": <SessionAttendance session={session} />
   }
   
   if (!session) {return <div>Session not found.</div>;}

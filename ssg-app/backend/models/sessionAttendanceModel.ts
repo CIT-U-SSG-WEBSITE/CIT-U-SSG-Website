@@ -13,3 +13,8 @@ export type SessionAttendanceModel = {
   officer: OfficerModel;
 };
 
+export interface AttendanceTypeCount {
+  type: string;
+  count: number;
+  percentage: number;
+}

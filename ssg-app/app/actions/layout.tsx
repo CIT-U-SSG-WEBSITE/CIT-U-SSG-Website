@@ -3,7 +3,6 @@
 import React from "react";
 import SideNavigation from "@/components/SideNav/SideNavigation";
 import { linkPair } from "@/lib/link_types";
-import { usePathname } from "next/navigation";
 
 type LayoutProps = {
   children: React.ReactNode;

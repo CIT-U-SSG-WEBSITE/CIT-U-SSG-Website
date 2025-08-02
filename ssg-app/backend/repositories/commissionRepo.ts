@@ -9,7 +9,7 @@ import { CommissionModel } from "@/backend/models/commissionModel";
 
 export async function getAllCommissions(): Promise<CommissionModel[]> {
   const { data, error } = await supabase
-    .from("commissions")
+    .from("commission")
     .select("*");
     
   if (error) throw new Error(error.message);
@@ -18,7 +18,7 @@ export async function getAllCommissions(): Promise<CommissionModel[]> {
 
 export async function getCommissionsByType(type: string): Promise<CommissionModel[]> {
   const { data, error } = await supabase
-    .from("commissions")
+    .from("commission")
     .select("*")
     .eq("type", type);
   
@@ -28,7 +28,7 @@ export async function getCommissionsByType(type: string): Promise<CommissionMode
 
 export async function getCommissionById(id: string): Promise<CommissionModel> {
   const { data, error } = await supabase
-    .from("commissions")
+    .from("commission")
     .select("*")
     .eq("id", id)
     .single();
@@ -39,7 +39,7 @@ export async function getCommissionById(id: string): Promise<CommissionModel> {
 
 export async function getCommissionByInitials(initials: string): Promise<CommissionModel> {
   const { data, error } = await supabase
-    .from("commissions")
+    .from("commission")
     .select("*")
     .eq("initials", initials)
     .single();

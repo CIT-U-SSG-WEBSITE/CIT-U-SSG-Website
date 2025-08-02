@@ -11,6 +11,8 @@ interface Props {
 }
 
 export default function OfficersTable({ officers }: Props) {
+  console.log(officers)
+  
   // Zustand stores for search and commission filters
   const searchTerm = useOfficerSearchStore(state => state.search.trim().toLowerCase())
   const checkedCommissionIds = useOfficerCommissionFilterStore(state => state.checkedCommissionIds)
@@ -39,9 +41,9 @@ export default function OfficersTable({ officers }: Props) {
   return (
     <div className="flex max-md:flex-col md:grid md:grid-cols-2 gap-4">
       {filteredOfficers.length > 0 ? (
-        filteredOfficers.map(officer => (
+        filteredOfficers.map((officer, index) => (
           <OfficerProfileCard
-            key={officer.position + officer.lastname + officer.firstname}
+            key={index}
             officer={officer}
           />
         ))
