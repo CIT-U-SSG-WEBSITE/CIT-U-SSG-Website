@@ -83,5 +83,6 @@ function mapSessionRecordToModel(record: any): SessionModel {
     absent: record.absent,
     agenda,
     attendance,
+    photo: record.photo || null,
   };
 }

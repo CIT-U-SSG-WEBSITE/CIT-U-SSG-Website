@@ -18,6 +18,7 @@ export type SessionModel = {
   early_leave_ex?: number | null;
   early_leave_un?: number | null;
   absent?: number | null;
+  photo?: string | null;
   
   // Additional attributes
   agenda: SessionAgendaModel[];
