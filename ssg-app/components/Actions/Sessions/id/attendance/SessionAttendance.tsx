@@ -70,7 +70,7 @@ function SessionAttendance({ session }: Props) {
                 className={`flex h-fit px-2 py-1 ${colorMap[attendance.type]}`}
                 style={{ width: `${attendance.percentage}%`}}
               >
-                {Math.round(attendance.percentage)}%
+                {attendance.percentage > 4 ? `${Math.round(attendance.percentage)}%` : '.'}
               </div>
             ))}
           </div>
@@ -81,7 +81,7 @@ function SessionAttendance({ session }: Props) {
                 className={`flex h-fit px-1 text-sm`}
                 style={{ width: `${attendance.percentage}%`}}
               >
-                {attendance.type}
+                {attendance.percentage > 8 && attendance.type}
               </div>
             ))}
           </div>

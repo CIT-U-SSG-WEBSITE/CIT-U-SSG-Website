@@ -2,6 +2,7 @@
  * ResolutionModel represents the structure of a resolution record.
  * It maps the SQL `resolution` table into a TypeScript object.
  */
+import {OfficerModel} from "@/backend/models/officerModel";
 
 export type ResolutionModel = {
   id: string;
@@ -16,4 +17,7 @@ export type ResolutionModel = {
   agree_vote?: number;
   disagree_vote?: number;
   abstain_vote?: number;
+  
+  author: OfficerModel;
+  co_authors?: OfficerModel[];
 };

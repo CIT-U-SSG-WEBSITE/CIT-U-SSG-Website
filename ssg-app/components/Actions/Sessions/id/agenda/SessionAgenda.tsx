@@ -1,6 +1,6 @@
 import React from 'react';
 import {SessionAgendaModel} from "@/backend/models/sessionAgendaModel";
-import SessionAgendaCard from "@/components/Actions/Sessions/id/SessionAgendaCard";
+import SessionAgendaCard from "@/components/Actions/Sessions/id/agenda/SessionAgendaCard";
 
 interface Props {
   agenda: SessionAgendaModel[] | undefined;

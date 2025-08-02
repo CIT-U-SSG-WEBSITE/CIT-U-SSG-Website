@@ -146,3 +146,39 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
     commission: officer.commission
   }));
 }
+
+// get officer by id
+export async function getOfficerById(officerId: string): Promise<OfficerModel | null> {
+  const { data, error } = await supabase
+    .from("officers")
+    .select(`
+    id,
+    firstname,
+    lastname,
+    position,
+    photo,
+    commission_id,
+    commission:commission_id (
+      id,
+      name,
+      initials,
+      type,
+      brief_description,
+      full_description
+    )
+  `).eq('id', officerId).single();
+  
+  if (error) {
+    console.log(error);
+    return null; // Return null if no officer found or error occurs
+  }
+  
+  return {
+    id: data.id,
+    firstname: data.firstname,
+    lastname: data.lastname,
+    position: data.position,
+    photo: data.photo, // optional
+    commission: data.commission
+  };
+}

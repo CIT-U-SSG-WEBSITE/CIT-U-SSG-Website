@@ -1,6 +1,6 @@
 // controllers/resolutionController.ts
 
-import {getAllResolutions, insertResolution} from "@/backend/repositories/resolutionRepo";
+import {getAllResolutions, getResolutionsBySessionId, insertResolution} from "@/backend/repositories/resolutionRepo";
 import {ResolutionModel} from "@/backend/models/resolutionModel";
 
 /**
@@ -36,4 +36,8 @@ export async function fetchAllResolutions() {
       return a.number - b.number; // sort by number
     }
   });
+}
+
+export async function fetchResolutionsBySessionId(sessionId: string) {
+  return await getResolutionsBySessionId(sessionId);
 }

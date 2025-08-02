@@ -26,7 +26,7 @@ function SessionTabMenu({ tabs }: Props) {
           <li key={tab} className={`font-serif pb-1.5 flex w-fit transition-all duration-300 border-b-4 ${currentTab === tab ? "font-bold border-gold" : "border-transparent"}`}>
             <Button
               variant="ghost"
-              className="whitespace-nowrap p-0 lg:font-bold"
+              className="whitespace-nowrap p-0 lg:font-medium"
               onClick={() => handleTabClick(tab)}
             >
               {tab}
