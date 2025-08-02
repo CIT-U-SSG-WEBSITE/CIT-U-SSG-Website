@@ -49,6 +49,7 @@
   --color-dark-neutral: var(--dark-neutral);
   --color-gold: var(--gold);
   --color-gold-dark: var(--gold-dark);
+  --color-gold-light: var(--gold-light);
   --color-near-white: var(--near-white);
 
   --color-present: var(--gold);
@@ -67,6 +68,7 @@
   --near-white: oklch(0.9696 0 0); /* near white */
   --gold: oklch(0.6571 0.0887 89.89); /* gold */
   --gold-dark: oklch(0.3342 0.0403 90.14); /* gold dark */
+  --gold-light: oklch(0.8077 0.1088 85.4); /* gold light */
   --late: oklch(0.7249 0.0676 90.82); /* late */
   --excused: oklch(0.7897 0.0452 91.31); /* excused */
   --unexcused: oklch(0.8549 0.0227 89.81) ; /* unexcused */
