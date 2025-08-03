@@ -4,7 +4,7 @@ import React from 'react';
 import {SessionModel} from "@/backend/models/sessionModel";
 import SessionCard from "@/components/Actions/Sessions/SessionCard";
 import { useSessionFilterStore } from "@/store/sessionFilterStore";
-import {useSessionSearchStore} from "@/store/sessionSearchStore";
+import {useSearchStore} from "@/store/searchStore";
 
 interface Props {
   sessions: SessionModel[];
@@ -12,7 +12,7 @@ interface Props {
 
 function SessionTable( {sessions} : Props ) {
   // Zustand stores for search and session filters
-  const searchTerm = useSessionSearchStore(state => state.search.trim().toLowerCase())
+  const searchTerm = useSearchStore(state => state.search.trim().toLowerCase())
   const checkedSessionTypes = useSessionFilterStore(state => state.checkedSessionTypes)
   
   // Filter sessions by session type and search term

@@ -2,6 +2,7 @@ import React from 'react';
 import {UserRound as UserIcon} from "lucide-react";
 import {ResolutionModel} from "@/backend/models/resolutionModel";
 import {toOrdinal} from "@/lib/utils/ordinal";
+import Link from "next/link";
 
 interface Props {
   resolution: ResolutionModel;
@@ -12,7 +13,7 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
   return (
     <div className="flex flex-col gap-6 p-5 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
       <span className="font-serif text-base md:text-lg italic">
-        A Resolution {resolution.title}
+        A Resolution to {resolution.title}
       </span>
       <div className="w-full flex flex-col md:flex-row gap-8 justify-between md:items-end">
         {resolution.author ? (
@@ -26,7 +27,7 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
                     className="w-full object-cover mt-1/2" />
                 </div>
               ) : (
-                <div className="flex w-15 h-15 rounded-full bg-gold_gradient pt-3 px-3 justify-center items-center overflow-hidden">
+                <div className="flex w-15 h-15 rounded-full bg-gold_gradient px-3 justify-center items-center overflow-hidden">
                   <UserIcon className="w-20 h-20 text-light-neutral/80" />
                 </div>
               )}
@@ -96,10 +97,10 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
             </div>
           </div>
         ) : (
-          <span className="flex text-xs bg-maroon-light text-near-white px-3 py-1 rounded-full font-medium">
+          <Link href={`/actions/sessions/${resolution.session_id}`} className={`flex text-xs ${resolution.session_type === "EMERGENCY" ? "bg-maroon-light" : "bg-gold"} text-near-white px-3 py-1 rounded-full font-medium`}>
             {resolution.session_number && resolution.session_type &&
               `${toOrdinal(resolution.session_number)} ${resolution.session_type.charAt(0) + resolution.session_type.slice(1).toLowerCase()} Session`}
-          </span>
+          </Link>
         )}
       </div>
     </div>

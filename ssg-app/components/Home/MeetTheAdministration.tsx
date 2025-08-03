@@ -6,7 +6,7 @@ import {ArrowRight} from "lucide-react";
 import {fetchExecomOfficers} from "@/backend/controllers/officerController";
 import {OfficerModel} from "@/backend/models/officerModel";
 import {useMediaQuery} from "react-responsive";
-import OfficerCard from "@/components/ui/OfficerCard";
+import OfficerCard from "@/components/Government/Officers/OfficerCard";
 
 function MeetTheAdministration() {
   // Fetch the EXECOM officers from the controller

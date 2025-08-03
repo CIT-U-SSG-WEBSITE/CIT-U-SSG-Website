@@ -2,8 +2,8 @@
 
 import React from "react"
 import type { OfficerModel } from "@/backend/models/officerModel"
-import OfficerProfileCard from "@/components/Officers/OfficerProfileCard"
-import { useOfficerSearchStore } from "@/store/officerSearchStore"
+import OfficerProfileCard from "@/components/Government/Officers/OfficerProfileCard"
+import {useSearchStore} from "@/store/searchStore";
 import { useOfficerCommissionFilterStore } from "@/store/officerCommissionFilterStore"
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 export default function OfficersTable({ officers }: Props) {
   // Zustand stores for search and commission filters
-  const searchTerm = useOfficerSearchStore(state => state.search.trim().toLowerCase())
+  const searchTerm = useSearchStore(state => state.search.trim().toLowerCase())
   const checkedCommissionIds = useOfficerCommissionFilterStore(state => state.checkedCommissionIds)
   
   // Filter officers by commission and search term

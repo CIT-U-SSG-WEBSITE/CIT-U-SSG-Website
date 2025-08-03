@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {OfficerModel} from "@/backend/models/officerModel";
-import OfficerCard from "@/components/ui/OfficerCard";
+import OfficerCard from "@/components/Government/Officers/OfficerCard";
 
 interface Props {
   officers: OfficerModel[];

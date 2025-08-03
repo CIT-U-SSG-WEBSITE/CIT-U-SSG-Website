@@ -1,11 +1,11 @@
 import { create } from "zustand";
 
-interface OfficerSearchState {
+interface SearchState {
   search: string;
   setSearch: (value: string) => void;
 }
 
-export const useOfficerSearchStore = create<OfficerSearchState>((set) => ({
+export const useSearchStore = create<SearchState>((set) => ({
   search: "",
   setSearch: (value) => set({ search: value }),
 }));

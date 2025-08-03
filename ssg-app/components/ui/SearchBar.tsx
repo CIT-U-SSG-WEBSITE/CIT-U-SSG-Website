@@ -3,12 +3,16 @@
 import React, { useRef, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 
-import { useOfficerSearchStore } from "@/store/officerSearchStore"
+import {useSearchStore} from "@/store/searchStore";
 import { Button } from "@/components/ui/Button"
 import { Search, X } from "lucide-react"
 
-export default function OfficersSearch() {
-  const { search: searchTerm, setSearch } = useOfficerSearchStore()
+interface Props {
+  placeholder?: string;
+}
+
+export default function SearchBar({ placeholder = "Search something..." }: Props){
+  const { search: searchTerm, setSearch } = useSearchStore()
   const router = useRouter()
   const searchParams = useSearchParams()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -49,7 +53,7 @@ export default function OfficersSearch() {
     <div className="flex justify-between items-center w-full max-w-[480px] gap-4 px-6 py-1.5 !bg-near-white shadow-2xl/10 text-dark-neutral rounded-full focus-within:ring-2 focus-within:ring-ring/50 focus-within:border-ring">
       <input
         ref={inputRef}
-        placeholder="Search officers..."
+        placeholder={placeholder}
         className="!text-base w-full !p-0 !shadow-none placeholder:text-dark-neutral !focus-visible:border-none !focus-visible:ring-0 !outline-none"
         value={searchTerm}
         onChange={(e) => setSearch(e.target.value)}
