@@ -48,7 +48,7 @@ function SideNavigation({links}: Props) {
         <nav>
           <ul className="flex lg:flex-col gap-5">
             {links.map((link) => (
-              <li className={`font-serif lg:text-lg pb-1.5 flex w-fit transition-all duration-300 border-b-4 ${pathname === link.href ? "font-bold border-gold" : "border-transparent"}`}>
+              <li key={link.name} className={`font-serif lg:text-lg pb-1.5 flex w-fit transition-all duration-300 border-b-4 ${pathname === link.href ? "font-bold border-gold" : "border-transparent"}`}>
                 <Link href={link.href} className="whitespace-nowrap">{link.name}</Link>
               </li>
             ))}

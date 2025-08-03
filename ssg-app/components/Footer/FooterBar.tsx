@@ -25,7 +25,7 @@ function FooterBar() {
               <Image width={20} height={20} src="/instagram_logo.svg" alt="Instagram logo"/>
             </Link>
             <Link href="/ssg-app/public">
-              <Image width={20} height={20} src="/x_logo.svg" alt="X logo"/>
+              <Image width={19} height={20} src="/x_logo.svg" alt="X logo" style={{ height: "auto" }}/>
             </Link>
             <Link href="/ssg-app/public">
               <Image width={20} height={20} src="/outlook_logo.svg" alt="Outlook logo"/>

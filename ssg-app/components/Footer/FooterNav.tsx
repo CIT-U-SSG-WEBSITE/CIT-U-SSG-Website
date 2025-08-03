@@ -43,7 +43,7 @@ function FooterNav() {
       {isMobile ? (
         <Accordion type="single" collapsible className="w-full">
           {footerLinks.map(linkGroup => (
-            <AccordionItem value={linkGroup.title}>
+            <AccordionItem value={linkGroup.title} key={linkGroup.title}>
               <AccordionTrigger className="font-serif text-lg">
                 {linkGroup.title}
               </AccordionTrigger>
@@ -60,12 +60,12 @@ function FooterNav() {
       ) : (
         <div className="w-full flex justify-between pt-3 max-w-[640px]">
           {footerLinks.map(linkGroup => (
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-4" key={linkGroup.title}>
                 <span className="font-serif text-lg">
                   {linkGroup.title}
                 </span>
               {Array.isArray(linkGroup.links) && linkGroup.links.map(link => (
-                <Link href={link.href} className="text-sm">
+                <Link key={link.name} href={link.href} className="text-sm">
                   {link.name}
                 </Link>
               ))}

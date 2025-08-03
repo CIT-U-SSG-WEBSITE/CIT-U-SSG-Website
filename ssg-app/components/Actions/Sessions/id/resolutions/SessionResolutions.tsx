@@ -7,8 +7,6 @@ interface Props {
 }
 
 function SessionResolutions({ resolutions } : Props) {
-  console.log(resolutions);
-  
   return (
     <div className="flex flex-col gap-4 w-full h-fit">
       {resolutions && resolutions.length > 0 ? (
