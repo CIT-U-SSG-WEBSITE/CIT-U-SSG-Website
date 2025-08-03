@@ -1,7 +1,10 @@
+"use client";
+
 import React from 'react';
 import {AttendanceTypeCount} from "@/backend/models/sessionAttendanceModel";
 import {SessionModel} from "@/backend/models/sessionModel";
 import SessionAttendanceCard from "@/components/Actions/Sessions/id/attendance/SessionAttendanceCard";
+import {useMediaQuery} from "react-responsive";
 
 interface Props {
   session: SessionModel | null;
@@ -9,6 +12,10 @@ interface Props {
 
 function SessionAttendance({ session }: Props) {
   const representativeCount = 55; // This should be fetched from a representative controller or similar
+  const isMobile = useMediaQuery({maxWidth: 540});
+  
+  const meterMinPercentToShow = isMobile ? 8 : 4; // Minimum percentage to show in the meter
+  const labelMinPercentToShow = isMobile ? 14 : 7; // Minimum percentage to show the label
   
   const attendanceCounts : AttendanceTypeCount[] = [
     {
@@ -67,10 +74,10 @@ function SessionAttendance({ session }: Props) {
             {filteredAttendanceCounts.map((attendance, index) => (
               <div
                 key={index}
-                className={`flex h-fit px-2 py-1 ${colorMap[attendance.type]}`}
+                className={`flex h-fit px-1 md:px-2 py-1 text-sm md:text-base ${colorMap[attendance.type]}`}
                 style={{ width: `${attendance.percentage}%`}}
               >
-                {attendance.percentage > 4 ? `${Math.round(attendance.percentage)}%` : '.'}
+                {attendance.percentage > meterMinPercentToShow ? `${Math.round(attendance.percentage)}%` : '.'}
               </div>
             ))}
           </div>
@@ -78,10 +85,10 @@ function SessionAttendance({ session }: Props) {
             {filteredAttendanceCounts.map((attendance, index) => (
               <div
                 key={index}
-                className={`flex h-fit px-1 text-sm`}
+                className={`flex h-fit px-1 text-xs md:text-sm`}
                 style={{ width: `${attendance.percentage}%`}}
               >
-                {attendance.percentage > 8 && attendance.type}
+                {attendance.percentage > labelMinPercentToShow && attendance.type}
               </div>
             ))}
           </div>
@@ -89,7 +96,7 @@ function SessionAttendance({ session }: Props) {
       </div>
       <div className="flex flex-col w-full gap-4">
         <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3 md:gap-4">
             {session?.attendance ? (
               session.attendance.map(sessionAttendee => (
                 <SessionAttendanceCard
