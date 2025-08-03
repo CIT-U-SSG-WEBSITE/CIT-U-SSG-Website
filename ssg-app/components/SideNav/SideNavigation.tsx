@@ -19,7 +19,8 @@ type Props = {
 
 function SideNavigation({links}: Props) {
   const pathname = usePathname();
-  const currentLink = links.filter(link => link.href === pathname)[0];
+  const currentLink = links.find(link => link.href === pathname);
+  const currentLinkName = currentLink ? currentLink.name : "Sessions";
   const isTablet = useMediaQuery({maxWidth: 768});
   
   return (
@@ -28,7 +29,7 @@ function SideNavigation({links}: Props) {
         <NavigationMenu>
           <NavigationMenuItem className="list-none">
             <NavigationMenuTrigger className="rounded-none font-serif text-lg pb-1.5 px-0 gap-1 flex w-fit transition-all duration-300 border-b-4 font-bold border-gold ">
-              {currentLink.name}
+              {currentLinkName}
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="flex flex-col pl-0 py-2 w-[160px] gap-2">
@@ -47,8 +48,8 @@ function SideNavigation({links}: Props) {
       ) : (
         <nav>
           <ul className="flex lg:flex-col gap-5">
-            {links.map((link) => (
-              <li key={link.name} className={`font-serif lg:text-lg pb-1.5 flex w-fit transition-all duration-300 border-b-4 ${pathname === link.href ? "font-bold border-gold" : "border-transparent"}`}>
+            {links.map((link, index) => (
+              <li key={index} className={`font-serif lg:text-lg pb-1.5 flex w-fit transition-all duration-300 border-b-4 ${pathname === link.href ? "font-bold border-gold" : "border-transparent"}`}>
                 <Link href={link.href} className="whitespace-nowrap">{link.name}</Link>
               </li>
             ))}
