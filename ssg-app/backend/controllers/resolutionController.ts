@@ -38,7 +38,7 @@ export async function fetchAllResolutions() : Promise<ResolutionModel[]> {
     else if (b.number === null) return -1; // b goes to the end
     
     if (a.number && b.number) {
-      return a.number - b.number; // sort by number
+      return b.number - a.number; // sort by number
     }
   });
 }

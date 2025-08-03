@@ -107,7 +107,8 @@ export async function getAllResolutions(): Promise<ResolutionModel[]> {
         type,
         number
       )
-    `);
+    `).not("number", "is", null);
+  
   if (error) throw new Error(error.message);
   const resolutionIds = (data || []).map((r: any) => r.id);
   const { authorMap, coAuthorMap } = await fetchAuthorsForResolutions(resolutionIds);

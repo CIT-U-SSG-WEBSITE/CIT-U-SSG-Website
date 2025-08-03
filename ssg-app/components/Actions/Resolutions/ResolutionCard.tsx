@@ -12,7 +12,7 @@ interface Props {
 function ResolutionCard({ resolution, showVotes = false }: Props) {
   return (
     <div className="flex flex-col gap-6 p-5 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
-      <Link href={`/actions/resolutions/${resolution.id}`} className="font-serif text-base md:text-lg italic">
+      <Link href={`/actions/resolutions/${resolution.id}`} className="font-serif font-medium text-base md:text-lg italic">
         A Resolution to {resolution.title}
       </Link>
       <div className="w-full flex flex-col md:flex-row gap-8 justify-between md:items-end">
@@ -32,10 +32,10 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
                 </div>
               )}
             </div>
-            <div className="flex flex-col gap-1 justify-center">
-            <span className="text-lg font-medium">
-              Hon. {resolution.author.firstname} {resolution.author.lastname}
-            </span>
+            <div className="flex flex-col justify-center">
+              <span className="text-lg font-semibold">
+                Hon. {resolution.author.firstname} {resolution.author.lastname}
+              </span>
               <div className="flex gap-2">
                 <div className="flex -space-x-1">
                   {resolution.co_authors && resolution.co_authors.slice(0, Math.min(resolution.co_authors.length, 3)).map((coAuthor) => (
@@ -97,7 +97,7 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
             </div>
           </div>
         ) : (
-          <Link href={`/actions/sessions/${resolution.session_id}`} className={`flex text-xs ${resolution.session_type === "EMERGENCY" ? "bg-maroon-light" : "bg-gold"} text-near-white px-3 py-1 rounded-full font-medium`}>
+          <Link href={`/actions/sessions/${resolution.session_id}`} className={`flex text-xs font-medium w-fit ${resolution.session_type === "EMERGENCY" ? "bg-maroon-light" : "bg-gold"} text-near-white px-3 py-1 rounded-full font-medium`}>
             {resolution.session_number && resolution.session_type &&
               `${toOrdinal(resolution.session_number)} ${resolution.session_type.charAt(0) + resolution.session_type.slice(1).toLowerCase()} Session`}
           </Link>
