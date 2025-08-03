@@ -23,8 +23,8 @@ export default function MeetTheTeam({ officers,
       </div>
       
       <div className="grid grid-cols-4 gap-x-4 gap-y-6">
-        {officers.map((officer) =>
-          <OfficerCard officer={officer} />
+        {officers.map((officer, index) =>
+          <OfficerCard key={index} officer={officer} />
         )}
       </div>
     </section>

@@ -11,8 +11,6 @@ interface Props {
 }
 
 export default function OfficersTable({ officers }: Props) {
-  console.log(officers)
-  
   // Zustand stores for search and commission filters
   const searchTerm = useOfficerSearchStore(state => state.search.trim().toLowerCase())
   const checkedCommissionIds = useOfficerCommissionFilterStore(state => state.checkedCommissionIds)

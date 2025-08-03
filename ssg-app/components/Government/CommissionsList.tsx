@@ -21,8 +21,8 @@ function CommissionsList({ commissions,
       </div>
       
       <div className="flex flex-col gap-4">
-        {commissions.map((commission : CommissionModel) => (
-          <CommissionCard commission={commission} />
+        {commissions.map((commission : CommissionModel, index) => (
+          <CommissionCard key={index} commission={commission} />
         ))}
       </div>
     </section>

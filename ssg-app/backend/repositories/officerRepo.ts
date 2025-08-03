@@ -132,7 +132,7 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
   `).eq('position', position);
   
   if (error) {
-    console.log(error);
+    //console.log(error);
     throw new Error(error.message);
   }
   
@@ -169,7 +169,7 @@ export async function getOfficerById(officerId: string): Promise<OfficerModel | 
   `).eq('id', officerId).single();
   
   if (error) {
-    console.log(error);
+    //console.log(error);
     return null; // Return null if no officer found or error occurs
   }
   

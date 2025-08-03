@@ -18,7 +18,7 @@ export async function insertResoAuthor(author: ResoAuthorModel): Promise<ResoAut
     .single();
 
   if (error) {
-    console.log(error);
+    //console.log(error);
     throw new Error(error.message);
   }
 

@@ -15,7 +15,6 @@ function MeetTheAdministration() {
   useEffect(() => {
     fetchExecomOfficers().then(setOfficers);
   }, []);
-  console.log(officers);
   
   // set the count of officers to display based on screen size
   let officerCount : number;
@@ -43,8 +42,8 @@ function MeetTheAdministration() {
       </div>
       
       <div className="flex md:grid xl:flex gap-4 lg:gap-6 max-md:flex-col grid-cols-3 xl:flex-row max-md:items-end">
-        {officers.slice(0, officerCount).map((officer) =>
-          <OfficerCard officer={officer} isMobile={isMobile} />
+        {officers.slice(0, officerCount).map((officer, index) =>
+          <OfficerCard key={index} officer={officer} isMobile={isMobile} />
         )}
       </div>
     </section>

@@ -9,8 +9,6 @@ interface Props {
 }
 
 function ResolutionCard({ resolution, showVotes = false }: Props) {
-  console.log(resolution);
-  
   return (
     <div className="flex flex-col gap-6 p-5 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
       <span className="font-serif text-base md:text-lg italic">

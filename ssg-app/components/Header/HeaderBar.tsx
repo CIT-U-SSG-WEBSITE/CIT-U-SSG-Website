@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {AlignRight as Hamburger} from 'lucide-react';
@@ -58,8 +58,17 @@ const headerLinks : linkGroup[] = [
 ];
 
 function HeaderBar() {
-  const isMobile = useMediaQuery({maxWidth: 640});
-
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    setIsMobile(mediaQuery.matches);
+    
+    const handler = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+  
   return (
     <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 justify-between fixed top-0 z-50 bg-background/90 backdrop-blur-lg text-dark-neutral">
       <Link href="/" className="flex gap-3 items-center">

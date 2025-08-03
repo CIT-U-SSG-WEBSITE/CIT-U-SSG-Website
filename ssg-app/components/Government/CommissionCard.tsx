@@ -11,7 +11,11 @@ function CommissionCard({ commission }: Props) {
   return (
     <div key={commission.name} className="flex gap-6 rounded-3xl p-6 justify-between items-start shadow-lg bg-near-white">
       <div className="flex gap-4">
-        <img src={`/api/images?filename=${commission.photo}`} alt="" className="rounded-full h-20"/>
+        {commission.photo ? (
+          <img src={`/api/images?filename=${commission.photo}`} alt="" className="rounded-full h-20"/>
+        ) : (
+          <div className="min-w-20 grow"></div>
+        )}
         <div className="px-3 flex flex-col gap-1">
           <span className="font-serif font-bold text-lg">{commission.name}</span>
           <span className="">{commission.brief_description}</span>
