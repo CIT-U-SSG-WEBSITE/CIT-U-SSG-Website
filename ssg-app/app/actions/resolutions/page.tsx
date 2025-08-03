@@ -7,9 +7,6 @@ import SearchBar from "@/components/ui/SearchBar";
 export default async function Page() {
   const resolutions : ResolutionModel[] = await fetchAllResolutions();
   
-  //const activeResolutions = resolutions.filter(res => res.number);
-  //const adoptedResolutions = resolutions.filter(res => !res.number);
-  
   return (
     <div className="flex flex-col w-full h-fit min-h-screen bg-light-neutral">
       <div className="flex justify-between items-center gap-4 mb-10">

@@ -15,12 +15,13 @@ import {linkPair} from "@/lib/link_types";
 
 type Props = {
   links: linkPair[];
+  defaultLink: string;
 }
 
-function SideNavigation({links}: Props) {
+function SideNavigation({links, defaultLink}: Props) {
   const pathname = usePathname();
   const currentLink = links.find(link => link.href === pathname);
-  const currentLinkName = currentLink ? currentLink.name : "Sessions";
+  const currentLinkName = currentLink ? currentLink.name : defaultLink;
   const isTablet = useMediaQuery({maxWidth: 768});
   
   return (
