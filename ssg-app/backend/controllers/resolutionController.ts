@@ -1,6 +1,11 @@
 // controllers/resolutionController.ts
 
-import {getAllResolutions, getResolutionsBySessionId, insertResolution} from "@/backend/repositories/resolutionRepo";
+import {
+  getAllResolutions,
+  getResolutionById,
+  getResolutionsBySessionId,
+  insertResolution
+} from "@/backend/repositories/resolutionRepo";
 import {ResolutionModel} from "@/backend/models/resolutionModel";
 
 /**
@@ -21,7 +26,7 @@ export async function createResolution(resolution: ResolutionModel) {
 }
 
 
-export async function fetchAllResolutions() {
+export async function fetchAllResolutions() : Promise<ResolutionModel[]> {
   const allResolutions = await getAllResolutions();
   
   // sort resolutions by number. if number is null, put it at the end ordered by name
@@ -38,6 +43,10 @@ export async function fetchAllResolutions() {
   });
 }
 
-export async function fetchResolutionsBySessionId(sessionId: string) {
+export async function fetchResolutionsBySessionId(sessionId: string) : Promise<ResolutionModel[]> {
   return await getResolutionsBySessionId(sessionId);
+}
+
+export async function fetchResolutionById(id: string): Promise<ResolutionModel | null> {
+  return await getResolutionById(id);
 }

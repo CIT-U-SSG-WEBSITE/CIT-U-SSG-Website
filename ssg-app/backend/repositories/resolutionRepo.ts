@@ -140,3 +140,31 @@ export async function getResolutionsBySessionId(sessionId: string): Promise<Reso
   const { authorMap, coAuthorMap } = await fetchAuthorsForResolutions(resolutionIds);
   return (resolutions || []).map((res: any) => mapResolution(res, authorMap, coAuthorMap));
 }
+
+export async function getResolutionById(resolutionId: string): Promise<ResolutionModel | null> {
+  const { data: resolution, error: resError } = await supabase
+    .from("resolution")
+    .select(`
+      id,
+      series,
+      number,
+      title,
+      body,
+      session_id,
+      is_adopted,
+      agree_vote,
+      disagree_vote,
+      abstain_vote,
+      session:session_id (
+        type,
+        number
+      )
+    `)
+    .eq("id", resolutionId)
+    .single();
+  
+  if (resError) throw new Error(resError.message);
+  if (!resolution) return null;
+  const { authorMap, coAuthorMap } = await fetchAuthorsForResolutions([resolution.id]);
+  return mapResolution(resolution, authorMap, coAuthorMap);
+}
