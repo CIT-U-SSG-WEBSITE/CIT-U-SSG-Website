@@ -1,5 +1,4 @@
 import React from 'react';
-import {fetchResolutionById} from "@/backend/controllers/resolutionController";
 import {UserIcon} from "lucide-react";
 import {fetchExecutiveOrderById} from "@/backend/controllers/executiveOrderController";
 import {ExecutiveOrderModel} from "@/backend/models/executiveOrderModel";
@@ -12,8 +11,8 @@ export default async function Page({ params }: { params: { id: string } }) {
   
   const text = executiveOrder.body && executiveOrder.body.length > 0 ? executiveOrder.body : null;
   const sections = text ? text.split("---END OF SECTION---") : [];
-  const whereasClauses = sections[0] ? sections[0].split("\\nWHEREAS,").map(clause => clause.trim()) : null;
-  const nowThereforeClause = sections[1] ? sections[1].split("\\nNOW, THEREFORE,")[1] : null;
+  const whereasClauses = sections[0] ? sections[0].split("\\n").map(clause => clause.trim()) : null;
+  const nowThereforeClause = sections[1] ? sections[1].split("\\NOW, THEREFORE,")[0] : null;
   const sectionClauses = sections[2] ? sections[2].split("\\n").map(clause => clause.trim()) : null;
   
   return (
@@ -56,12 +55,14 @@ export default async function Page({ params }: { params: { id: string } }) {
         <article className="flex flex-col gap-4 w-full font-serif">
           <>
             {whereasClauses && whereasClauses.map((section, index) => {
-              const [content, list] = section.split("\\list");
+              const clause = section.split("\\list");
+              const content = clause[0];
+              const list = clause[1];
               
               return (
                 <p key={index}>
                   <p key={index} className="prose prose-lg prose-neutral leading-7">
-                    <strong>WHEREAS</strong>, {content.trim()}
+                    {content.trim()}
                   </p>
                   <p className="pl-2 gap-2">
                     {list && list.trim().length > 0 && (list.split("\\i").map((item, index) => (
@@ -73,7 +74,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             })}
           </>
           <p className="prose prose-lg prose-neutral leading-7">
-            <strong>NOW, THEREFORE</strong>, {nowThereforeClause}
+            {nowThereforeClause}
           </p>
           <>
             {sectionClauses && sectionClauses.map((section, index) => {
