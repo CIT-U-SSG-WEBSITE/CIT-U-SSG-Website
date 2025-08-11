@@ -1,4 +1,4 @@
-import {getAllOfficers, getOfficersByCommission, getOfficersByPosition} from "@/backend/repositories/officerRepo";
+import {getAllOfficers, getOfficersByCommission, getOfficersByPosition, getOfficersByLastnames} from "@/backend/repositories/officerRepo";
 import {getCommissionByInitials} from "@/backend/repositories/commissionRepo";
 import {OfficerModel} from "@/backend/models/officerModel";
 
@@ -117,7 +117,8 @@ export async function fetchLegislativeOfficers() {
     "ARCH Representative", "CHE Representative", "CE Representative", "CASE Representative",
     "CCJ Representative", "CMBA Representative", "CNAHS Representative", "CPE Representative",
     "CS Representative", "EE Representative", "ECE Representative", "IE Representative",
-    "IT Representative", "ME Representative", "EM Representative"
+    "IT Representative", "ME Representative", "EM Representative", "House Speaker",
+    "Speaker pro Tempore", "Legislative Secretary", "Asst. Legislative Secretary"
   ];
   
   // group and sort the officer.position, then by officer.lastname
@@ -128,4 +129,8 @@ export async function fetchLegislativeOfficers() {
   }
   
   return representatives;
+}
+
+export async function fetchOfficersByLastnames(lastnames: string[]) {
+  return await getOfficersByLastnames(lastnames);
 }

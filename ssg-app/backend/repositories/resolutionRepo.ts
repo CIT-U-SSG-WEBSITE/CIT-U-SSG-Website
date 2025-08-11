@@ -29,6 +29,26 @@ export async function insertResolution(resolution: ResolutionModel) {
   if (error) throw new Error(error.message);
 }
 
+export async function insertResolutionsBulk(rows: Array<{
+  series?: string | null;
+  number?: number | null;
+  title: string;
+  body?: string | null;
+  session_id: string | null;
+  is_adopted?: boolean | null;
+  agree_vote?: number | null;
+  disagree_vote?: number | null;
+  abstain_vote?: number | null;
+}>): Promise<Array<{ id: string; title: string }>> {
+  if (!rows.length) return [];
+  const { data, error } = await supabase
+    .from("resolution")
+    .insert(rows)
+    .select("id, title");
+  if (error) throw new Error(error.message);
+  return (data || []).map((r: any) => ({ id: r.id, title: r.title }));
+}
+
 // Helper to fetch authors and co-authors for a set of resolution IDs
 async function fetchAuthorsForResolutions(resolutionIds: string[]): Promise<{
   authorMap: Record<string, OfficerModel[]>;

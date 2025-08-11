@@ -1,5 +1,5 @@
 // controllers/resoAuthorController.ts
-import { insertResoAuthor } from "@/backend/repositories/resoAuthorRepo";
+import { insertResoAuthor, insertResoAuthorsBulk } from "@/backend/repositories/resoAuthorRepo";
 import { ResoAuthorModel } from "@/backend/models/resoAuthorModel";
 import {ResolutionModel} from "@/backend/models/resolutionModel";
 import {fetchAllResolutions} from "@/backend/controllers/resolutionController";
@@ -39,4 +39,12 @@ export async function createResoAuthorsFromCSV(
       await createResoAuthor({ officer_id, resolution_id, role });
     }
   }
+}
+
+export async function createResoAuthorsFromRows(rows: Array<{
+  officer_id: string;
+  resolution_id: string;
+  role: "AUTHOR" | "CO-AUTHOR";
+}>) {
+  await insertResoAuthorsBulk(rows);
 }

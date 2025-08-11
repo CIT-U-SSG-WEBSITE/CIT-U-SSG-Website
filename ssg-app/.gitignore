@@ -43,3 +43,6 @@ next-env.d.ts
 # csv
 *.csv
 /data_port/
+
+# Ignore manage page.tsx for local development
+app/manage/*

@@ -36,6 +36,53 @@ export async function getSessionByNumberAndType(number: number, type: SessionTyp
   return data ? mapSessionRecordToModel(data) : null;
 }
 
+export async function insertSession(params: {
+  number: number;
+  type: SessionType;
+  summary?: string | null;
+  date: string; // YYYY-MM-DD
+  livestream?: string | null;
+}): Promise<SessionModel> {
+  const { data, error } = await supabase
+    .from("session")
+    .insert({
+      number: params.number,
+      type: params.type,
+      summary: params.summary ?? null,
+      date: params.date,
+      livestream: params.livestream ?? null,
+    })
+    .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commission:commission_id(*)))`)
+    .single();
+
+  if (error) throw new Error(error.message);
+  return mapSessionRecordToModel(data);
+}
+
+export async function insertSessionAgendaBulk(rows: Array<{
+  session_id: string;
+  item: string;
+  number?: number | null;
+}>): Promise<void> {
+  if (!rows.length) return;
+  const { error } = await supabase
+    .from("session_agenda")
+    .insert(rows);
+  if (error) throw new Error(error.message);
+}
+
+export async function insertSessionAttendanceBulk(rows: Array<{
+  officer_id: string;
+  session_id: string;
+  attendance?: string | null;
+}>): Promise<void> {
+  if (!rows.length) return;
+  const { error } = await supabase
+    .from("session_attendance")
+    .insert(rows);
+  if (error) throw new Error(error.message);
+}
+
 function getOrdinal(n: number): string {
   const s = ["th", "st", "nd", "rd"], v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);

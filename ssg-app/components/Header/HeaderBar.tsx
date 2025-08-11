@@ -30,7 +30,6 @@ const headerLinks : linkGroup[] = [
   {
     title: "Government",
     links: [
-      { name: "List of officers", href: "/government/officers" },
       { name: "Executive",        href: "/government/executive" },
       { name: "Legislative",      href: "/government/legislative" },
       { name: "Judiciary",        href: "/government/judiciary" },
@@ -41,19 +40,13 @@ const headerLinks : linkGroup[] = [
     title: "Actions",
     links: [
       { name: "Session",            href: "/actions/sessions" },
-      { name: "Projects",           href: "/actions/projects" },
       { name: "Resolutions",        href: "/actions/resolutions" },
       { name: "Executive orders",   href: "/actions/eo" },
-      { name: "Letters of Appeal",  href: "/actions/appeals" },
     ]
   },
   {
-    title: "Services",
-    links: "/services"
-  },
-  {
-    title: "Contact",
-    links: "/"
+    title: "Officers",
+    links: "/government/officers"
   },
 ];
 

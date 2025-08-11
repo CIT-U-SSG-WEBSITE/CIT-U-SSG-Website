@@ -182,3 +182,41 @@ export async function getOfficerById(officerId: string): Promise<OfficerModel | 
     commission: data.commission
   };
 }
+
+// Get officers by an array of lastnames (case-sensitive match on stored lastname)
+export async function getOfficersByLastnames(lastnames: string[]): Promise<OfficerModel[]> {
+  const unique = Array.from(new Set((lastnames || []).filter(Boolean)));
+  if (unique.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from("officers")
+    .select(`
+      id,
+      firstname,
+      lastname,
+      position,
+      photo,
+      commission_id,
+      commission:commission_id (
+        id,
+        name,
+        initials,
+        type,
+        brief_description,
+        full_description
+      )
+    `)
+    .in("lastname", unique);
+
+  if (error) throw new Error(error.message);
+
+  return (data || []).map((officer: any) => ({
+    id: officer.id,
+    firstname: officer.firstname,
+    lastname: officer.lastname,
+    position: officer.position,
+    photo: officer.photo,
+    commissionId: officer.commission_id,
+    commission: officer.commission,
+  }));
+}

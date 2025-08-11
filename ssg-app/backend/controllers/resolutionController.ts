@@ -4,7 +4,8 @@ import {
   getAllResolutions,
   getResolutionById,
   getResolutionsBySessionId,
-  insertResolution
+  insertResolution,
+  insertResolutionsBulk,
 } from "@/backend/repositories/resolutionRepo";
 import {ResolutionModel} from "@/backend/models/resolutionModel";
 
@@ -23,6 +24,20 @@ export async function createResolution(resolution: ResolutionModel) {
   };
   
   return await insertResolution(toInsert);
+}
+
+export async function createResolutionsFromRows(sessionId: string, rows: Array<{
+  series?: string | null;
+  number?: number | null;
+  title: string;
+  body?: string | null;
+  is_adopted?: boolean | null;
+  agree_vote?: number | null;
+  disagree_vote?: number | null;
+  abstain_vote?: number | null;
+}>) {
+  const payload = rows.map(r => ({ ...r, session_id: sessionId }));
+  await insertResolutionsBulk(payload);
 }
 
 

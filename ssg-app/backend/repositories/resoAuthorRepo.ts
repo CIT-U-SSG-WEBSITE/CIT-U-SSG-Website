@@ -29,3 +29,15 @@ export async function insertResoAuthor(author: ResoAuthorModel): Promise<ResoAut
   };
 }
 
+export async function insertResoAuthorsBulk(rows: Array<{
+  officer_id: string;
+  resolution_id: string;
+  role: "AUTHOR" | "CO-AUTHOR";
+}>): Promise<void> {
+  if (!rows.length) return;
+  const { error } = await supabase
+    .from("resolution_author")
+    .insert(rows);
+  if (error) throw new Error(error.message);
+}
+
