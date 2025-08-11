@@ -13,9 +13,9 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
   return (
     <div className="flex flex-col gap-6 p-5 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
       <div className="flex flex-col w-full gap-2">
-        <span className="text-xs font-medium uppercase">Resolution #<span className="font-semibold text-sm">{resolution.number!}</span></span>
+        <span className="text-xs font-medium uppercase">{resolution.number && resolution.is_adopted ? (<>Resolution #<span className="font-semibold text-sm">{resolution.number!}</span></>) : "Proposed Resolution" }</span>
         <Link href={`/actions/resolutions/${resolution.id}`} className="font-serif font-medium text-base md:text-lg italic">
-          A Resolution to {resolution.title}
+          {resolution.is_adopted ? "A Resolution" : "A Proposed Resolution"} {resolution.title}
         </Link>
       </div>
       <div className="w-full flex flex-col md:flex-row gap-8 justify-between md:items-end">

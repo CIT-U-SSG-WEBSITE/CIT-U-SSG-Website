@@ -11,7 +11,6 @@ interface Props {
 }
 
 function SessionAttendance({ session }: Props) {
-  const representativeCount = 55; // This should be fetched from a representative controller or similar
   const isMobile = useMediaQuery({maxWidth: 540});
   
   const meterMinPercentToShow = isMobile ? 8 : 4; // Minimum percentage to show in the meter
@@ -52,6 +51,8 @@ function SessionAttendance({ session }: Props) {
   
   // Filter out attendance types with zero count
   const filteredAttendanceCounts = attendanceCounts.filter(attendance => attendance.count > 0);
+  const representativeCount = filteredAttendanceCounts.reduce((sum, attendance) => sum + attendance.count, 0);
+  
   filteredAttendanceCounts.forEach(attendance => {
     attendance.percentage = +(attendance.count / representativeCount * 100).toFixed(2);
   });
