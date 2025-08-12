@@ -62,7 +62,7 @@ function HeaderBar() {
   }, []);
   
   return (
-    <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 justify-between fixed top-0 z-50 bg-background/90 backdrop-blur-lg text-dark-neutral">
+    <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-3 md:py-6 justify-between fixed top-0 z-50 bg-background/90 backdrop-blur-lg text-dark-neutral">
       <Link href="/" className="flex gap-3 items-center">
         <Image width={73.1} height={40} src="/icon_logo.png" alt="SSG Bridge the Gap logo" className="h-6 w-auto" style={{ width: "auto" }}/>
         <span className="font-bold hidden lg:block font-serif text-md select-none">
