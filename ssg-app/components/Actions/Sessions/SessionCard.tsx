@@ -23,7 +23,7 @@ export default function SessionCard({session}: Props) {
         aria-label={`${session.type.toLowerCase()} session ${session.number} thumbnail`}>
         <Link href={`/actions/sessions/${session.id}`} className={`flex flex-col p-4 gap-2 w-full h-full justify-between bg-gradient-to-tr ${session.type === "EMERGENCY" ? "from-maroon via-maroon-light/70" : "from-gold via-gold/70"} to-transparent`}>
           <Image src="/logo-ssg.png" alt="SSG logo" className="w-9 h-9 opacity-90 rounded-full select-none" width={40} height={40} />
-          <div className={`flex flex-col w-[180px] font-bold ${session.type === "EMERGENCY" ? "text-gold-light/80" : "text-light-neutral/80"}`}>
+          <div className={`flex flex-col w-[180px] font-medium ${session.type === "EMERGENCY" ? "text-gold-light/80" : "text-light-neutral/80"}`}>
             <span className="w-full text-4xl font-serif select-none">{toOrdinal(session.number).toUpperCase()}</span>
             <span className="w-full text-xl select-none">
             {session.number && session.type &&

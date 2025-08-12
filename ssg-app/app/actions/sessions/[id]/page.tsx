@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     <div className="flex flex-col w-full h-fit gap-16">
       <div className="flex flex-col gap-5 w-full">
         <div className="flex flex-col w-full gap-1">
-          <h1 className="font-serif text-3xl font-bold">
+          <h1 className="font-serif text-3xl font-medium">
             {session.numberOrdinal} {session.type.charAt(0) + session.type.slice(1).toLowerCase()} Session
           </h1>
           <span className="text-lg">{session.date}</span>
