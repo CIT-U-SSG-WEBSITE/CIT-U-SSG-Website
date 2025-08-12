@@ -1,9 +1,7 @@
-import React from 'react';
+import {redirect} from "next/navigation";
 
-function Page(props) {
-  return (
-    <div>Welcome to the actionssssssssssssss</div>
-  );
+function Page() {
+  redirect('action/sessions');
 }
 
 export default Page;

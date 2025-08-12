@@ -52,10 +52,10 @@ function BranchesOfGovernment() {
       </div>
       
       <div className="flex gap-12 lg:gap-16 w-full flex-col lg:flex-row">
-        {Branches.map(branch => {
+        {Branches.map((branch, index) => {
           const Icon = branch.icon;
           return (
-            <div className="flex lg:flex-col gap-6 lg:gap-8 w-full items-start">
+            <div key={index} className="flex lg:flex-col gap-6 lg:gap-8 w-full items-start">
               <div className="rounded-full p-3 bg-gold text-light-neutral">
                 <Icon size={32} strokeWidth={2} />
               </div>

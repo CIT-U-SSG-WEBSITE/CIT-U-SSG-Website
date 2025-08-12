@@ -9,10 +9,12 @@ import {CommissionModel} from "@/backend/models/commissionModel";
  */
 
 export type OfficerModel = {
+  id: string;
   firstname: string;
   lastname: string;
   position: string;
-  commissionId: string;
+  photo: string;
+  // commissionId: string;
   
   // navigation attribute: helpful to quickly get the commission of the officer
   commission: CommissionModel;

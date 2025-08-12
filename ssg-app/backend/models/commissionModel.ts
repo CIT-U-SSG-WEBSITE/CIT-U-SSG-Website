@@ -11,11 +11,12 @@ export type CommissionModel = {
   created_at: string;
   name: string;
   initials: string;
-  type: "CABINET-LEVEL COMMISSION"
+  photo: string;
+  type: "EXECOM"
+    | "CABINET-LEVEL COMMISSION"
     | "LEGISLATIVE COMMITTEE"
-    | "CONSTITUTIONAL COMMISSION"
     | "SUPREME COURT"
-    | "EXECOM";
+    | "CONSTITUTIONAL COMMISSION";
   full_description?: string;
   brief_description?: string;
 };

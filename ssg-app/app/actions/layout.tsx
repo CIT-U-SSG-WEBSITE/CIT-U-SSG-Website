@@ -1,25 +1,25 @@
-import React from 'react';
+"use client";
+
+import React from "react";
 import SideNavigation from "@/components/SideNav/SideNavigation";
-import {linkPair} from "@/lib/link_types";
+import { linkPair } from "@/lib/link_types";
 
 type LayoutProps = {
   children: React.ReactNode;
-}
+};
 
-const links : linkPair[] = [
-  { name: "Sessions",            href: "/actions/sessions" },
-  { name: "Projects",           href: "/actions/projects" },
-  { name: "Resolutions",        href: "/actions/resolutions" },
-  { name: "Executive orders",   href: "/actions/eo" },
-  { name: "Letters of appeal",  href: "/actions/appeals" },
-]
+const links: linkPair[] = [
+  { name: "Sessions", href: "/actions/sessions" },
+  { name: "Resolutions", href: "/actions/resolutions" },
+  { name: "Executive orders", href: "/actions/eo" },
+];
 
 function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex flex-col lg:flex-row w-full px-4 md:px-8 lg:px-16 gap-8 border">
-      <SideNavigation links={links} />
+    <div className="flex flex-col lg:flex-row w-full px-4 md:px-8 mb-20 md:mb-30 lg:mb-40 lg:px-16 gap-8">
+      <SideNavigation links={links} defaultLink={"Sessions"} />
       <section className="flex justify-center items-center w-full h-full">
-        <div className="flex max-w-[920px] grow border border-dark-neutral">
+        <div className="flex max-w-[960px] grow">
           {children}
         </div>
       </section>

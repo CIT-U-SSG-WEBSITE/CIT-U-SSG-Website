@@ -7,13 +7,14 @@ import FooterBar from "@/components/Footer/FooterBar";
 
 const merriweather = Merriweather({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ["300", "400", "700", "900"],
   style: ['normal', 'italic'],
   variable: '--font-merriweather',
 });
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 

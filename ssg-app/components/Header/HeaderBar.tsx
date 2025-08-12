@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {AlignRight as Hamburger} from 'lucide-react';
@@ -30,7 +30,6 @@ const headerLinks : linkGroup[] = [
   {
     title: "Government",
     links: [
-      { name: "List of officers", href: "/government/officers" },
       { name: "Executive",        href: "/government/executive" },
       { name: "Legislative",      href: "/government/legislative" },
       { name: "Judiciary",        href: "/government/judiciary" },
@@ -41,29 +40,32 @@ const headerLinks : linkGroup[] = [
     title: "Actions",
     links: [
       { name: "Session",            href: "/actions/sessions" },
-      { name: "Projects",           href: "/actions/projects" },
       { name: "Resolutions",        href: "/actions/resolutions" },
       { name: "Executive orders",   href: "/actions/eo" },
-      { name: "Letters of Appeal",  href: "/actions/appeals" },
     ]
   },
   {
-    title: "Services",
-    links: "/services"
-  },
-  {
-    title: "Contact",
-    links: "/"
+    title: "Officers",
+    links: "/government/officers"
   },
 ];
 
 function HeaderBar() {
-  const isMobile = useMediaQuery({maxWidth: 640});
-
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    setIsMobile(mediaQuery.matches);
+    
+    const handler = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+  
   return (
     <header className="flex w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 justify-between fixed top-0 z-50 bg-background/90 backdrop-blur-lg text-dark-neutral">
       <Link href="/" className="flex gap-3 items-center">
-        <Image width={42} height={20} src="/icon_logo.png" alt="SSG Bridge the Gap logo"/>
+        <Image width={73.1} height={40} src="/icon_logo.png" alt="SSG Bridge the Gap logo" className="h-6 w-auto" style={{ width: "auto" }}/>
         <span className="font-bold hidden lg:block font-serif text-md select-none">
           CIT-U Supreme Student Government
         </span>
@@ -83,14 +85,14 @@ function HeaderBar() {
           </SheetTrigger>
           <SheetContent >
             <div className="flex flex-col py-12 gap-10 px-6 overflow-y-auto scrollbar-thin">
-              {headerLinks.map(linkGroup =>
+              {headerLinks.map((linkGroup, index) =>
                 <>
                   {Array.isArray(linkGroup.links) ? (
-                    <div className="flex flex-col gap-4">
+                    <div key={index} className="flex flex-col gap-4">
                       <span className="text-lg font-serif flex">{linkGroup.title}</span>
                       <div className="flex flex-col gap-4 text-balance">
-                        {linkGroup.links.map(link => (
-                          <Link href={link.href} className="text-sm">
+                        {linkGroup.links.map((link, index) => (
+                          <Link key={index} href={link.href} className="text-sm">
                             {link.name}
                           </Link>
                         ))}
@@ -107,14 +109,14 @@ function HeaderBar() {
       ) : (
         <NavigationMenu viewport={false}>
           <NavigationMenuList>
-            {headerLinks.map(linkGroup =>
+            {headerLinks.map((linkGroup, index) =>
               (Array.isArray(linkGroup.links) ? (
-                <NavigationMenuItem>
+                <NavigationMenuItem key={index}>
                   <NavigationMenuTrigger>{linkGroup.title}</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="flex flex-col pl-0 py-2 w-[160px] gap-2">
-                      {linkGroup.links.map(link => (
-                        <li>
+                      {linkGroup.links.map((link, index) => (
+                        <li key={index}>
                           <NavigationMenuLink asChild>
                             <Link href={link.href}>{link.name}</Link>
                           </NavigationMenuLink>
@@ -124,7 +126,7 @@ function HeaderBar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               ) : (
-                <NavigationMenuItem>
+                <NavigationMenuItem key={index}>
                   <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                     <Link href={linkGroup.links}>{linkGroup.title}</Link>
                   </NavigationMenuLink>

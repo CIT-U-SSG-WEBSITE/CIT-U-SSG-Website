@@ -17,20 +17,11 @@ const footerLinks : linkGroup[] = [
     ]
   },
   {
-    title: "Documents",
-    links: [
-      { name: "Constitution",       href: "/government/constitution" },
-      { name: "Resolutions",        href: "/actions/resolutions" },
-      { name: "Executive orders",   href: "/actions/eo" },
-      { name: "Letters of Appeal",  href: "/actions/appeals" },
-    ]
-  },
-  {
     title: "Actions",
     links: [
       { name: "Session",    href: "/actions/sessions" },
-      { name: "Projects",   href: "/actions/projects" },
-      { name: "Incentives", href: "/services" },
+      { name: "Resolutions",        href: "/actions/resolutions" },
+      { name: "Executive orders",   href: "/actions/eo" },
     ]
   },
 ];
@@ -43,7 +34,7 @@ function FooterNav() {
       {isMobile ? (
         <Accordion type="single" collapsible className="w-full">
           {footerLinks.map(linkGroup => (
-            <AccordionItem value={linkGroup.title}>
+            <AccordionItem value={linkGroup.title} key={linkGroup.title}>
               <AccordionTrigger className="font-serif text-lg">
                 {linkGroup.title}
               </AccordionTrigger>
@@ -58,14 +49,14 @@ function FooterNav() {
           ))}
         </Accordion>
       ) : (
-        <div className="w-full flex justify-between pt-3 max-w-[640px]">
+        <div className="w-full flex justify-between pt-3 sm:max-w-[440px] lg:max-w-[360px] xl:max-w-[480px]">
           {footerLinks.map(linkGroup => (
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-4" key={linkGroup.title}>
                 <span className="font-serif text-lg">
                   {linkGroup.title}
                 </span>
               {Array.isArray(linkGroup.links) && linkGroup.links.map(link => (
-                <Link href={link.href} className="text-sm">
+                <Link key={link.name} href={link.href} className="text-sm">
                   {link.name}
                 </Link>
               ))}
