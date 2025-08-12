@@ -11,10 +11,10 @@ interface Props {
 
 function ResolutionCard({ resolution, showVotes = false }: Props) {
   return (
-    <div className="flex flex-col gap-6 p-5 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
+    <div className="flex flex-col gap-6 p-4 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
       <div className="flex flex-col w-full gap-2">
-        <span className="text-xs font-medium uppercase">{resolution.number && resolution.is_adopted ? (<>Resolution #<span className="font-semibold text-sm">{resolution.number!}</span></>) : "Proposed Resolution" }</span>
-        <Link href={`/actions/resolutions/${resolution.id}`} className="font-serif font-medium text-base md:text-lg italic">
+        <span className="text-xs font-medium uppercase px-1">{resolution.number && resolution.is_adopted ? (<>Resolution #<span className="font-medium text-sm">{resolution.number!}</span></>) : "Proposed Resolution" }</span>
+        <Link href={`/actions/resolutions/${resolution.id}`} className="font-serif font-medium leading-[160%] px-1 text-base md:text-lg italic">
           {resolution.is_adopted ? "A Resolution" : "A Proposed Resolution"} {resolution.title}
         </Link>
       </div>
@@ -36,8 +36,8 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
               )}
             </div>
             <div className="flex flex-col justify-center">
-              <span className="text-lg font-semibold">
-                Hon. {resolution.author.firstname} {resolution.author.lastname}
+              <span className="text-lg font-medium">
+                {`Hon. ${resolution.author.firstname} ${resolution.author.lastname}`}
               </span>
               <div className="flex gap-2">
                 <div className="flex -space-x-1">
@@ -85,18 +85,18 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
         )}
         
         {showVotes ? (
-          <div className="flex gap-6 w-full md:w-fit justify-between items-center">
-            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-4 md:px-0 justify-center items-center">
-              <span className="text-sm md:text-lg font-bold">{resolution.agree_vote}</span>
-              <span className="text-sm max-md:font-bold">agree</span>
+          <div className="flex gap-2 md:gap-6 w-full md:w-fit justify-between items-center">
+            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-3 md:px-0 justify-center items-center">
+              <span className="text-sm md:text-lg font-medium">{resolution.agree_vote}</span>
+              <span className="text-sm max-md:font-medium">agree</span>
             </div>
-            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-4 md:px-0 justify-center items-center">
-              <span className="text-sm md:text-lg font-bold">{resolution.disagree_vote}</span>
-              <span className="text-sm max-md:font-bold">disagree</span>
+            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-3 md:px-0 justify-center items-center">
+              <span className="text-sm md:text-lg font-medium">{resolution.disagree_vote}</span>
+              <span className="text-sm max-md:font-medium">disagree</span>
             </div>
-            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-4 md:px-0 justify-center items-center">
-              <span className="text-sm md:text-lg font-bold">{resolution.abstain_vote}</span>
-              <span className="text-sm max-md:font-bold">abstain</span>
+            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-3 md:px-0 justify-center items-center">
+              <span className="text-sm md:text-lg font-medium">{resolution.abstain_vote}</span>
+              <span className="text-sm max-md:font-medium">abstain</span>
             </div>
           </div>
         ) : (

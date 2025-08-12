@@ -29,7 +29,7 @@ function SideNavigation({links, defaultLink}: Props) {
       {isTablet ? (
         <NavigationMenu>
           <NavigationMenuItem className="list-none">
-            <NavigationMenuTrigger className="rounded-none font-serif text-lg pb-1.5 px-0 gap-1 flex w-fit transition-all duration-300 border-b-4 font-bold border-gold ">
+            <NavigationMenuTrigger className="rounded-none font-serif text-lg pb-1.5 px-0 gap-1 flex w-fit transition-all duration-300 border-b-4 font-medium border-gold ">
               {currentLinkName}
             </NavigationMenuTrigger>
             <NavigationMenuContent>

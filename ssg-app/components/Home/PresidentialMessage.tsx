@@ -18,7 +18,7 @@ function PresidentialMessage() {
         </div>
         <div className="flex flex-col">
           <span className="text-lg font-serif font-bold">Zeth Villamala</span>
-          <span>SSG President, &apos;2425</span>
+          <span>SSG President, &apos;2526</span>
         </div>
       </div>
       <p className="italic text-center">&ldquo;The SSG exists to serve, to listen, and to lead with integrity. This term, we move forward together — guided by purpose, and grounded in the voice of every Technologian.&rdquo;
