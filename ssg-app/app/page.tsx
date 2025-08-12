@@ -1,7 +1,6 @@
 import BranchesOfGovernment from "@/components/Home/BranchesOfGovernment";
 import MeetTheAdministration from "@/components/Home/MeetTheAdministration";
 import PresidentialMessage from "@/components/Home/PresidentialMessage";
-import GotQuestions from "@/components/Home/GotQuestions";
 import ReadConstitution from "@/components/Home/ReadConstitution";
 import HeroSection from "@/components/Home/HeroSection";
 
@@ -14,7 +13,6 @@ export default function Home() {
       <MeetTheAdministration />
       <BranchesOfGovernment />
       <ReadConstitution />
-      {/*<GotQuestions />*/}
     </div>
   );
 }
