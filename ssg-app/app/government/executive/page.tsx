@@ -3,21 +3,31 @@ import {fetchCommissionsFiltered} from "@/backend/controllers/commissionControll
 import {fetchOfficersByCommission} from "@/backend/controllers/officerController";
 import MeetTheTeam from "@/components/Government/MeetTheTeam";
 import CommissionsList from "@/components/Government/CommissionsList";
+import {CommissionModel} from "@/backend/models/commissionModel";
+import {OfficerModel} from "@/backend/models/officerModel";
 
 async function Page() {
   // Fetch the cabinet-level commissions from the controller
-  const commissions = await fetchCommissionsFiltered("CABINET-LEVEL COMMISSION");
+  let commissions: CommissionModel[] = [];
+  let executiveCommittee: OfficerModel[] = [];
   
-  const order = [
-    "President",
-    "Vice President",
-    "Secretary General",
-    "Treasurer General",
-    "Executive Auditor",
-    "Cabinet Secretary",
-    "Solicitor General",
-  ];
-  const executiveCommittee = await fetchOfficersByCommission("EXECOM", order);
+  try {
+    commissions = await fetchCommissionsFiltered("CABINET-LEVEL COMMISSION");
+    
+    const order = [
+      "President",
+      "Vice President",
+      "Secretary General",
+      "Treasurer General",
+      "Executive Auditor",
+      "Cabinet Secretary",
+      "Solicitor General",
+    ];
+    executiveCommittee = await fetchOfficersByCommission("EXECOM", order);
+  } catch (error) {
+    console.error("Error loading executive page data:", error);
+    // Continue with empty arrays if database is not available
+  }
   
   return (
     <div className="flex flex-col w-full h-fit gap-16">
@@ -35,7 +45,7 @@ async function Page() {
           <h1 className="font-serif text-3xl font-bold">Executive Branch</h1>
           <span className="text-lg">Leading with Vision and Action</span>
         </div>
-        <p>The Executive Branch, led by the SSG President, drives the Supreme Student Government’s initiatives. Supported by its <i>commissions</i>, it turns student concerns into action, oversees programs, and works with all sectors to uphold student welfare through responsive leadership and service.</p>
+        <p>The Executive Branch, led by the SSG President, drives the Supreme Student Government's initiatives. Supported by its <i>commissions</i>, it turns student concerns into action, oversees programs, and works with all sectors to uphold student welfare through responsive leadership and service.</p>
       </div>
       
       <MeetTheTeam

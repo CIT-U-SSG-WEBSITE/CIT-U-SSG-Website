@@ -1,7 +1,7 @@
-import {getAllCommissions, getCommissionsByType} from "@/backend/repositories/commissionRepo";
+import {getAllCommissions, getCommissionsByType, getCommissionById} from "@/backend/repositories/commissionRepo";
 
 /**
- * CONTROLLERS *control* how data is handled after it’s retrieved by the repository.
+ * CONTROLLERS *control* how data is handled after it's retrieved by the repository.
  * This layer handles logic like filtering, combining, or validating data
  * before it's sent to the UI or another process.
  */
@@ -32,4 +32,8 @@ export async function fetchAllCommissions() {
     }
     return a.initials.localeCompare(b.initials);
   });
+}
+
+export async function fetchCommissionById(id: string) {
+  return await getCommissionById(id);
 }
