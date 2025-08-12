@@ -12,14 +12,32 @@ export default async function Page({ params }: { params: { id: string } }) {
   const text = resolution.body && resolution.body.length > 0 ? resolution.body : null;
   const sections = text ? text.split("---END OF SECTION---") : [];
   const whereasClauses = sections[0] ? sections[0].split("\\nWHEREAS,").slice(1).map(clause => clause.trim()) : null;
-  const nowThereforeClause = sections[1] ? sections[1].split("\\nNOW, THEREFORE,")[1] : null;
   
-  const resolvedClauses = sections[2] ? sections[2].split("\\nBE IT FURTHER RESOLVED,").slice(1).map(clause => clause.trim()) : null;
+  let resolvedClauses = sections[1] ? sections[1].split("\\nBE IT FURTHER RESOLVED,").map(clause => clause.trim()) : null;
+  let resolvedClausesCount = resolvedClauses ? resolvedClauses.length : 0;
+  console.log(`Resolved Clauses Count: ${resolvedClausesCount}`);
   
-  const resolvedClausesCount = resolvedClauses ? resolvedClauses.length : 0;
-  const herebyResolvedClause = resolvedClauses && resolvedClausesCount > 0 ? resolvedClauses[0].trim() : undefined;
-  const furtherResolvedClauses = resolvedClauses && resolvedClausesCount > 2 ? resolvedClauses.slice(1, resolvedClausesCount - 1).map(clause => clause.trim()) : [];
-  const finallyResolvedClause = resolvedClauses && resolvedClausesCount > 1 ? resolvedClauses[resolvedClausesCount - 1].trim() : undefined;
+  let nowThereforeClause, herebyResolvedClause, furtherResolvedClauses, finallyResolvedClause;
+  
+  if (resolvedClauses && resolvedClausesCount > 1) {
+    const lastClauses = resolvedClauses[resolvedClausesCount - 1].split("\\nBE IT FINALLY RESOLVED,");
+    resolvedClauses[resolvedClausesCount - 1] = lastClauses[0].trim();
+    resolvedClauses.push(lastClauses[1].trim())
+    
+    nowThereforeClause = resolvedClausesCount > 0 ? resolvedClauses[0].trim().split("THEREFORE, ")[1] : undefined;
+    herebyResolvedClause = resolvedClausesCount > 1 ? resolvedClauses[1].trim() : undefined;
+    furtherResolvedClauses = resolvedClausesCount > 2 ? resolvedClauses.slice(1, resolvedClausesCount - 1).map(clause => clause.trim()) : [];
+    finallyResolvedClause = resolvedClausesCount > 1 ? resolvedClauses[resolvedClausesCount - 1].trim() : undefined;
+  } else {
+    resolvedClauses = sections.splice(1);
+    resolvedClausesCount = resolvedClauses ? resolvedClauses.length : 0;
+    
+    nowThereforeClause = resolvedClausesCount > 0 ? resolvedClauses[0].trim().split("THEREFORE, ")[1] : undefined;
+    herebyResolvedClause = resolvedClausesCount > 1 ? resolvedClauses[1].trim().split("HEREBY RESOLVED, ")[1] : undefined;
+    furtherResolvedClauses = resolvedClausesCount > 2 ? resolvedClauses[2].trim().split("\\nBE IT FURTHER RESOLVED,") : [];
+    finallyResolvedClause = furtherResolvedClauses.pop();
+  }
+  
   
   return (
     <div className="flex flex-col w-full max-w-[840px] h-fit gap-8 md:gap-12 mx-auto">
