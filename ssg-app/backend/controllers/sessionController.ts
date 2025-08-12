@@ -7,18 +7,20 @@ import {
   insertSessionAgendaBulk,
   insertSessionAttendanceBulk,
 } from "@/backend/repositories/sessionRepo";
-import { SessionModel, SessionType } from "@/backend/models/sessionModel";
+import { SessionModel, SessionModelPlus, SessionType } from "@/backend/models/sessionModel";
+import { SessionAgendaCreateFromRow } from "@/backend/models/sessionAgendaModel";
+import { SessionAttendanceCreateFromRow } from "@/backend/models/sessionAttendanceModel";
 
-export async function fetchAllSessionsSorted(): Promise<SessionModel[]> {
+export async function fetchAllSessionsSorted(): Promise<SessionModelPlus[]> {
   const sessions = await getAllSessions();
   return sessions.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export async function fetchSessionById(id: string): Promise<SessionModel | null> {
+export async function fetchSessionById(id: string): Promise<SessionModelPlus | null> {
   return await getSessionById(id);
 }
 
-export async function fetchSessionByNumberAndType(number: number, type: SessionType): Promise<SessionModel | null> {
+export async function fetchSessionByNumberAndType(number: number, type: SessionType): Promise<SessionModelPlus | null> {
   return await getSessionByNumberAndType(number, type);
 }
 
@@ -28,7 +30,7 @@ export async function createSession(params: {
   summary?: string | null;
   date: string; // YYYY-MM-DD
   livestream?: string | null;
-}): Promise<SessionModel> {
+}): Promise<SessionModelPlus> {
   // basic normalization/validation
   const normalizedType = params.type.toUpperCase() as SessionType;
   const summary = (params.summary ?? '').trim() || null;
@@ -42,7 +44,7 @@ export async function createSession(params: {
   });
 }
 
-export async function createAgendaFromRows(sessionId: string, rows: Array<{ item: string; number?: number | null }>) {
+export async function createAgendaFromRows(sessionId: string, rows: SessionAgendaCreateFromRow[]) {
   const payload = rows.map(r => ({ 
     session_id: sessionId, 
     item: r.item, 
@@ -51,7 +53,7 @@ export async function createAgendaFromRows(sessionId: string, rows: Array<{ item
   await insertSessionAgendaBulk(payload);
 }
 
-export async function createAttendanceFromRows(sessionId: string, rows: Array<{ officer_id: string; attendance?: string | null }>) {
+export async function createAttendanceFromRows(sessionId: string, rows: SessionAttendanceCreateFromRow[]) {
   const payload = rows.map(r => ({ 
     session_id: sessionId, 
     officer_id: r.officer_id, 

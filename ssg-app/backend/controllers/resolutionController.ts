@@ -7,7 +7,7 @@ import {
   insertResolution,
   insertResolutionsBulk,
 } from "@/backend/repositories/resolutionRepo";
-import {ResolutionModel} from "@/backend/models/resolutionModel";
+import {ResolutionModel, ResolutionModelPlus, ResolutionCreateFromRow} from "@/backend/models/resolutionModel";
 
 /**
  * CONTROLLERS apply business logic or validation before passing data to repositories.
@@ -26,22 +26,13 @@ export async function createResolution(resolution: ResolutionModel) {
   return await insertResolution(toInsert);
 }
 
-export async function createResolutionsFromRows(sessionId: string, rows: Array<{
-  series?: string | null;
-  number?: number | null;
-  title: string;
-  body?: string | null;
-  is_adopted?: boolean | null;
-  agree_vote?: number | null;
-  disagree_vote?: number | null;
-  abstain_vote?: number | null;
-}>) {
+export async function createResolutionsFromRows(sessionId: string, rows: ResolutionCreateFromRow[]) {
   const payload = rows.map(r => ({ ...r, session_id: sessionId }));
   await insertResolutionsBulk(payload);
 }
 
 
-export async function fetchAllResolutions() : Promise<ResolutionModel[]> {
+export async function fetchAllResolutions() : Promise<ResolutionModelPlus[]> {
   const allResolutions = await getAllResolutions();
   
   // sort resolutions by number. if number is null, put it at the end ordered by name
@@ -55,13 +46,14 @@ export async function fetchAllResolutions() : Promise<ResolutionModel[]> {
     if (a.number && b.number) {
       return b.number - a.number; // sort by number
     }
+    return 0; // fallback case
   });
 }
 
-export async function fetchResolutionsBySessionId(sessionId: string) : Promise<ResolutionModel[]> {
+export async function fetchResolutionsBySessionId(sessionId: string) : Promise<ResolutionModelPlus[]> {
   return await getResolutionsBySessionId(sessionId);
 }
 
-export async function fetchResolutionById(id: string): Promise<ResolutionModel | null> {
+export async function fetchResolutionById(id: string): Promise<ResolutionModelPlus | null> {
   return await getResolutionById(id);
 }

@@ -1,13 +1,13 @@
 "use client"
 
 import React from 'react';
-import {SessionModel} from "@/backend/models/sessionModel";
+import {SessionModelPlus} from "@/backend/models/sessionModel";
 import SessionCard from "@/components/Actions/Sessions/SessionCard";
 import { useSessionFilterStore } from "@/store/sessionFilterStore";
 import {useSearchStore} from "@/store/searchStore";
 
 interface Props {
-  sessions: SessionModel[];
+  sessions: SessionModelPlus[];
 }
 
 function SessionTable( {sessions} : Props ) {
@@ -16,7 +16,7 @@ function SessionTable( {sessions} : Props ) {
   const checkedSessionTypes = useSessionFilterStore(state => state.checkedSessionTypes)
   
   // Filter sessions by session type and search term
-  const getFilteredSessions = (): SessionModel[] => {
+  const getFilteredSessions = (): SessionModelPlus[] => {
     const filteredBySearchType =
       checkedSessionTypes.length > 0
         ? sessions.filter(session => checkedSessionTypes.includes(session.type))

@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowRight } from "lucide-react";
-import {SessionModel} from "@/backend/models/sessionModel";
+import {SessionModelPlus} from "@/backend/models/sessionModel";
 import {Button} from "@/components/ui/Button";
 import Link from "next/link";
 import React from "react";
@@ -10,7 +10,7 @@ import {toOrdinal} from "@/lib/utils/ordinal";
 import Image from "next/image";
 
 type Props = {
-  session: SessionModel;
+  session: SessionModelPlus;
 }
 
 export default function SessionCard({session}: Props) {

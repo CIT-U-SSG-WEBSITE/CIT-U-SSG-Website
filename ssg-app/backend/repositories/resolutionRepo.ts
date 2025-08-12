@@ -1,7 +1,7 @@
 // repositories/resolutionRepo.ts
 
 import { supabase } from "@/lib/supabase";
-import { ResolutionModel } from "@/backend/models/resolutionModel";
+import { ResolutionModel, ResolutionModelPlus } from "@/backend/models/resolutionModel";
 import {OfficerModel} from "@/backend/models/officerModel";
 
 /**
@@ -90,7 +90,7 @@ async function fetchAuthorsForResolutions(resolutionIds: string[]): Promise<{
   return { authorMap, coAuthorMap };
 }
 
-function mapResolution(res: any, authorMap: Record<string, OfficerModel[]>, coAuthorMap: Record<string, OfficerModel[]>): ResolutionModel {
+function mapResolution(res: any, authorMap: Record<string, OfficerModel[]>, coAuthorMap: Record<string, OfficerModel[]>): ResolutionModelPlus {
   return {
     id: res.id,
     series: res.series,
@@ -109,7 +109,7 @@ function mapResolution(res: any, authorMap: Record<string, OfficerModel[]>, coAu
   };
 }
 
-export async function getAllResolutions(): Promise<ResolutionModel[]> {
+export async function getAllResolutions(): Promise<ResolutionModelPlus[]> {
   const { data, error } = await supabase
     .from("resolution")
     .select(`
@@ -135,7 +135,7 @@ export async function getAllResolutions(): Promise<ResolutionModel[]> {
   return (data || []).map((res: any) => mapResolution(res, authorMap, coAuthorMap));
 }
 
-export async function getResolutionsBySessionId(sessionId: string): Promise<ResolutionModel[]> {
+export async function getResolutionsBySessionId(sessionId: string): Promise<ResolutionModelPlus[]> {
   const { data: resolutions, error: resError } = await supabase
     .from("resolution")
     .select(`
@@ -162,7 +162,7 @@ export async function getResolutionsBySessionId(sessionId: string): Promise<Reso
   return (resolutions || []).map((res: any) => mapResolution(res, authorMap, coAuthorMap));
 }
 
-export async function getResolutionById(resolutionId: string): Promise<ResolutionModel | null> {
+export async function getResolutionById(resolutionId: string): Promise<ResolutionModelPlus | null> {
   const { data: resolution, error: resError } = await supabase
     .from("resolution")
     .select(`

@@ -1,11 +1,11 @@
 import React from 'react';
 import {UserRound as UserIcon} from "lucide-react";
-import {ResolutionModel} from "@/backend/models/resolutionModel";
+import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import {toOrdinal} from "@/lib/utils/ordinal";
 import Link from "next/link";
 
 interface Props {
-  resolution: ResolutionModel;
+  resolution: ResolutionModelPlus;
   showVotes?: boolean;
 }
 

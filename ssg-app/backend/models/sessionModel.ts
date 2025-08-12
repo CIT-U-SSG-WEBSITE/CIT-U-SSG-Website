@@ -4,11 +4,11 @@ import { SessionAttendanceModel } from "./sessionAttendanceModel";
 
 export type SessionType = "REGULAR" | "EMERGENCY" | "JOINT" | "INAUGURAL" | "SPECIAL";
 
+// Base model that matches the database table exactly
 export type SessionModel = {
   id: string;
   type: SessionType;
   number: number;
-  numberOrdinal: string; // e.g. 1st, 2nd, 3rd
   livestream?: string | null;
   date: string;
   summary?: string | null;
@@ -19,8 +19,11 @@ export type SessionModel = {
   early_leave_un?: number | null;
   absent?: number | null;
   photo?: string | null;
-  
-  // Additional attributes
+};
+
+// Plus model that includes navigation attributes and computed fields
+export type SessionModelPlus = SessionModel & {
+  numberOrdinal: string; // e.g. 1st, 2nd, 3rd
   agenda: SessionAgendaModel[];
   attendance: SessionAttendanceModel[];
 };

@@ -1,9 +1,9 @@
 import React from 'react';
-import {ResolutionModel} from "@/backend/models/resolutionModel";
+import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import ResolutionCard from "@/components/Actions/Resolutions/ResolutionCard";
 
 interface Props {
-  resolutions: ResolutionModel[];
+  resolutions: ResolutionModelPlus[];
 }
 
 function SessionResolutions({ resolutions } : Props) {

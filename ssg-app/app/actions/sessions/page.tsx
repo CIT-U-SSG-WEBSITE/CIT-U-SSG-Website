@@ -1,4 +1,4 @@
-import {SessionModel, SessionType} from "@/backend/models/sessionModel";
+import {SessionModelPlus, SessionType} from "@/backend/models/sessionModel";
 import {fetchAllSessionsSorted} from "@/backend/controllers/sessionController";
 import SessionTable from "@/components/Actions/Sessions/SessionTable";
 import SearchBar from "@/components/ui/SearchBar";
@@ -6,7 +6,7 @@ import SessionFilter from "@/components/Actions/Sessions/SessionFilter";
 
 
 export default async function Page() {
-  const sessions : SessionModel[] = await fetchAllSessionsSorted();
+  const sessions : SessionModelPlus[] = await fetchAllSessionsSorted();
   const sessionTypes: (SessionType | "ALL")[] = [
     "ALL",
     "JOINT",

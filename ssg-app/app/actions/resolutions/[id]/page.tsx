@@ -1,10 +1,10 @@
 import React from 'react';
-import {ResolutionModel} from "@/backend/models/resolutionModel";
+import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import {fetchResolutionById} from "@/backend/controllers/resolutionController";
 import {UserIcon} from "lucide-react";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const resolution : ResolutionModel | null = await fetchResolutionById(params.id);
+  const resolution : ResolutionModelPlus | null = await fetchResolutionById(params.id);
   
   if (!resolution) {return <div>Resolution not found.</div>;}
   if (!resolution.number) {return <div>Resolution not yet publicly available</div>;}

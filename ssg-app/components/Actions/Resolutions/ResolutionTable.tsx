@@ -1,20 +1,20 @@
 "use client";
 
 import React from 'react';
-import {ResolutionModel} from "@/backend/models/resolutionModel";
+import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import ResolutionCard from "@/components/Actions/Resolutions/ResolutionCard";
 import {useSearchStore} from "@/store/searchStore";
 import {toOrdinal} from "@/lib/utils/ordinal";
 
 interface Props {
-  resolutions: ResolutionModel[];
+  resolutions: ResolutionModelPlus[];
 }
 
 function ResolutionTable({ resolutions } : Props) {
   const searchTerm = useSearchStore(state => state.search.trim().toLowerCase())
   
   // Filter sessions by session type and search term
-  const getFilteredResolutions = (): ResolutionModel[] => {
+  const getFilteredResolutions = (): ResolutionModelPlus[] => {
     return resolutions.filter(resolution => {
       const sessionName = `${resolution.session_number && toOrdinal(resolution.session_number)} ${resolution.session_type} session`;
       

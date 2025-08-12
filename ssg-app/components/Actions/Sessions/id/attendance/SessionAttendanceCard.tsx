@@ -1,9 +1,9 @@
 import React from 'react';
 import { UserRound as UserIcon } from 'lucide-react';
 import { OfficerModel } from "@/backend/models/officerModel";
-import {SessionAttendanceModel} from "@/backend/models/sessionAttendanceModel";
+import {SessionAttendanceModelPlus} from "@/backend/models/sessionAttendanceModel";
 type Props = {
-  sessionAttendee: SessionAttendanceModel;
+  sessionAttendee: SessionAttendanceModelPlus;
 }
 
 function SessionAttendanceCard({ sessionAttendee }: Props) {

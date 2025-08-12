@@ -1,9 +1,9 @@
 import React from 'react';
-import {SessionAgendaModel} from "@/backend/models/sessionAgendaModel";
+import {SessionAgendaModelPlus} from "@/backend/models/sessionAgendaModel";
 import SessionAgendaCard from "@/components/Actions/Sessions/id/agenda/SessionAgendaCard";
 
 interface Props {
-  agenda: SessionAgendaModel[] | undefined;
+  agenda: SessionAgendaModelPlus[] | undefined;
 }
 
 function SessionAgenda({ agenda }: Props) {

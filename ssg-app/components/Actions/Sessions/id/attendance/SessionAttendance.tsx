@@ -2,12 +2,12 @@
 
 import React from 'react';
 import {AttendanceTypeCount} from "@/backend/models/sessionAttendanceModel";
-import {SessionModel} from "@/backend/models/sessionModel";
+import {SessionModelPlus} from "@/backend/models/sessionModel";
 import SessionAttendanceCard from "@/components/Actions/Sessions/id/attendance/SessionAttendanceCard";
 import {useMediaQuery} from "react-responsive";
 
 interface Props {
-  session: SessionModel | null;
+  session: SessionModelPlus | null;
 }
 
 function SessionAttendance({ session }: Props) {

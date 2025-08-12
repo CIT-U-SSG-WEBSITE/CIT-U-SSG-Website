@@ -1,11 +1,11 @@
 // repositories/sessionRepo.ts
 import { supabase } from "@/lib/supabase";
-import { SessionModel, SessionType } from "@/backend/models/sessionModel";
-import { SessionAgendaModel } from "@/backend/models/sessionAgendaModel";
-import { SessionAttendanceModel } from "@/backend/models/sessionAttendanceModel";
+import { SessionModel, SessionModelPlus, SessionType } from "@/backend/models/sessionModel";
+import { SessionAgendaModel, SessionAgendaModelPlus } from "@/backend/models/sessionAgendaModel";
+import { SessionAttendanceModel, SessionAttendanceModelPlus } from "@/backend/models/sessionAttendanceModel";
 import { OfficerModel } from "@/backend/models/officerModel";
 
-export async function getAllSessions(): Promise<SessionModel[]> {
+export async function getAllSessions(): Promise<SessionModelPlus[]> {
   const { data, error } = await supabase
     .from("session")
     .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commission:commission_id(*)))`);
@@ -15,25 +15,35 @@ export async function getAllSessions(): Promise<SessionModel[]> {
   return (data || []).map(mapSessionRecordToModel);
 }
 
-export async function getSessionById(id: string): Promise<SessionModel | null> {
+export async function getSessionById(id: string): Promise<SessionModelPlus | null> {
   const { data, error } = await supabase
     .from("session")
     .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commission:commission_id(*)))`)
     .eq("id", id)
     .single();
-  if (error) throw new Error(error.message);
-  return data ? mapSessionRecordToModel(data) : null;
+
+  if (error) {
+    if (error.code === "PGRST116") return null; // No rows returned
+    throw new Error(error.message);
+  }
+
+  return mapSessionRecordToModel(data);
 }
 
-export async function getSessionByNumberAndType(number: number, type: SessionType): Promise<SessionModel | null> {
+export async function getSessionByNumberAndType(number: number, type: SessionType): Promise<SessionModelPlus | null> {
   const { data, error } = await supabase
     .from("session")
     .select(`*, session_agenda(*), session_attendance(*, officers:officer_id(*, commission:commission_id(*)))`)
     .eq("number", number)
     .eq("type", type)
     .single();
-  if (error) throw new Error(error.message);
-  return data ? mapSessionRecordToModel(data) : null;
+
+  if (error) {
+    if (error.code === "PGRST116") return null; // No rows returned
+    throw new Error(error.message);
+  }
+
+  return mapSessionRecordToModel(data);
 }
 
 export async function insertSession(params: {
@@ -42,7 +52,7 @@ export async function insertSession(params: {
   summary?: string | null;
   date: string; // YYYY-MM-DD
   livestream?: string | null;
-}): Promise<SessionModel> {
+}): Promise<SessionModelPlus> {
   const { data, error } = await supabase
     .from("session")
     .insert({
@@ -97,15 +107,15 @@ function formatDate(dateString: string): string {
   });
 }
 
-function mapSessionRecordToModel(record: any): SessionModel {
+function mapSessionRecordToModel(record: any): SessionModelPlus {
   // Map agenda with session number and type
-  const agenda: SessionAgendaModel[] = (record.session_agenda || []).map((a: any) => ({
+  const agenda: SessionAgendaModelPlus[] = (record.session_agenda || []).map((a: any) => ({
     ...a,
     session_number: record.number,
     session_type: record.type,
   }));
   // Map attendance with session number, type, and officer
-  const attendance: SessionAttendanceModel[] = (record.session_attendance || []).map((att: any) => ({
+  const attendance: SessionAttendanceModelPlus[] = (record.session_attendance || []).map((att: any) => ({
     officer_id: att.officer_id,
     session_id: att.session_id,
     attendance: att.attendance,

@@ -1,18 +1,18 @@
 import React, {JSX} from 'react';
 import { fetchSessionById } from "@/backend/controllers/sessionController";
-import {SessionModel} from "@/backend/models/sessionModel";
+import {SessionModelPlus} from "@/backend/models/sessionModel";
 import SessionSummary from "@/components/Actions/Sessions/SessionSummary";
 import SessionTabMenu from "@/components/Actions/Sessions/id/SessionTabMenu";
 import SessionAgenda from "@/components/Actions/Sessions/id/agenda/SessionAgenda";
 import SessionResolutions from "@/components/Actions/Sessions/id/resolutions/SessionResolutions";
 import SessionAttendance from "@/components/Actions/Sessions/id/attendance/SessionAttendance";
 import SessionTabSection from "@/components/Actions/Sessions/id/SessionTabSection";
-import {ResolutionModel} from "@/backend/models/resolutionModel";
+import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import {fetchResolutionsBySessionId} from "@/backend/controllers/resolutionController";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const session : SessionModel | null = await fetchSessionById(params.id);
-  const sessionResolutions : ResolutionModel[] = await fetchResolutionsBySessionId(session?.id!);
+  const session : SessionModelPlus | null = await fetchSessionById(params.id);
+  const sessionResolutions : ResolutionModelPlus[] = await fetchResolutionsBySessionId(session?.id!);
   
   const tabs : Record<string, JSX.Element> = {
     "Agenda": <SessionAgenda agenda={session?.agenda} />,

@@ -1,11 +1,11 @@
 import React from 'react';
-import {ResolutionModel} from "@/backend/models/resolutionModel";
+import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import {fetchAllResolutions} from "@/backend/controllers/resolutionController";
 import ResolutionTable from "@/components/Actions/Resolutions/ResolutionTable";
 import SearchBar from "@/components/ui/SearchBar";
 
 export default async function Page() {
-  const resolutions : ResolutionModel[] = await fetchAllResolutions();
+  const resolutions : ResolutionModelPlus[] = await fetchAllResolutions();
   
   return (
     <div className="flex flex-col w-full h-fit min-h-screen bg-light-neutral">
