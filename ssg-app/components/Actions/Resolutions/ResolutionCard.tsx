@@ -37,7 +37,7 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
             </div>
             <div className="flex flex-col justify-center">
               <span className="text-lg font-medium">
-                Hon. {resolution.author.firstname} {resolution.author.lastname}
+                {`Hon. ${resolution.author.firstname} ${resolution.author.lastname}`}
               </span>
               <div className="flex gap-2">
                 <div className="flex -space-x-1">
@@ -85,18 +85,18 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
         )}
         
         {showVotes ? (
-          <div className="flex gap-6 w-full md:w-fit justify-between items-center">
-            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-4 md:px-0 justify-center items-center">
-              <span className="text-sm md:text-lg font-bold">{resolution.agree_vote}</span>
-              <span className="text-sm max-md:font-bold">agree</span>
+          <div className="flex gap-2 md:gap-6 w-full md:w-fit justify-between items-center">
+            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-3 md:px-0 justify-center items-center">
+              <span className="text-sm md:text-lg font-medium">{resolution.agree_vote}</span>
+              <span className="text-sm max-md:font-medium">agree</span>
             </div>
-            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-4 md:px-0 justify-center items-center">
-              <span className="text-sm md:text-lg font-bold">{resolution.disagree_vote}</span>
-              <span className="text-sm max-md:font-bold">disagree</span>
+            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-3 md:px-0 justify-center items-center">
+              <span className="text-sm md:text-lg font-medium">{resolution.disagree_vote}</span>
+              <span className="text-sm max-md:font-medium">disagree</span>
             </div>
-            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-4 md:px-0 justify-center items-center">
-              <span className="text-sm md:text-lg font-bold">{resolution.abstain_vote}</span>
-              <span className="text-sm max-md:font-bold">abstain</span>
+            <div className="flex flex-row md:flex-col gap-1 md:gap-0 px-3 md:px-0 justify-center items-center">
+              <span className="text-sm md:text-lg font-medium">{resolution.abstain_vote}</span>
+              <span className="text-sm max-md:font-medium">abstain</span>
             </div>
           </div>
         ) : (

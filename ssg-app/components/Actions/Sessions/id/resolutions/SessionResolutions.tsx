@@ -14,7 +14,7 @@ function SessionResolutions({ resolutions } : Props) {
   return (
     <div className="flex flex-col gap-4 w-full h-fit">
       {resolutions && resolutions.length > 0 ? (
-        <div className="flex flex-col gap-16">
+        <div className="w-full flex flex-col gap-16">
           {adoptedResolutions.length > 0 && (
             <div className="flex flex-col gap-4">
               <h2 className="text-xl font-medium font-serif pb-2">Adopted Resolutions</h2>
