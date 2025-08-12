@@ -29,7 +29,7 @@ function MeetTheAdministration() {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   
   return (
-    <section className="w-full max-w-[1320px] flex flex-col gap-8 md:gap-16 px-4 md:px-10 lg:px-16">
+    <section className="w-full max-w-[1320px] flex flex-col gap-10 md:gap-16 px-4 md:px-10 lg:px-16">
       <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 lg:gap-0">
         <div className="flex flex-col lg:max-w-[600px] gap-2">
           <span className="font-serif text-3xl font-medium leading-[120%]">Meet the administration</span>
