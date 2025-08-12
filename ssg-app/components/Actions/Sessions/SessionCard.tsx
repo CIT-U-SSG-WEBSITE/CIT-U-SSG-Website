@@ -15,7 +15,7 @@ type Props = {
 
 export default function SessionCard({session}: Props) {
   return (
-    <div className="bg-near-white w-full h-fit rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row items-start md:items-center p-4 md:p-2 gap-4 md:gap-6 shrink-0 !border-none">
+    <div className="bg-near-white w-full h-fit rounded-3xl shadow-md overflow-hidden flex flex-col md:flex-row items-start md:items-center p-3 md:py-2 md:px-3 gap-4 md:gap-6 shrink-0 !border-none">
       {/* Image as background */}
       <div
         className="justify-between w-full md:w-[300px] lg:w-[240px] xl:w-[300px] h-[184px] rounded-xl overflow-hidden flex-shrink-0 bg-cover bg-center"
@@ -34,9 +34,9 @@ export default function SessionCard({session}: Props) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col justify-between flex-grow max-md:px-4 md:pt-5 md:pb-3 gap-4 md:pr-6">
+      <div className="flex flex-col justify-between flex-grow max-md:px-2 md:pt-5 md:pb-3 gap-4 md:pr-6">
         <div className="flex flex-col gap-1">
-          <h2 className="text-2xl font-bold font-serif text-dark-neutral">
+          <h2 className="text-2xl font-medium font-serif text-dark-neutral">
             {session.numberOrdinal} {session.type.charAt(0) + session.type.slice(1).toLowerCase()} Session
           </h2>
           <p className="text-sm italic">

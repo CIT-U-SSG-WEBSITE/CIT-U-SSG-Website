@@ -11,10 +11,10 @@ interface Props {
 
 function ResolutionCard({ resolution, showVotes = false }: Props) {
   return (
-    <div className="flex flex-col gap-6 p-5 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
+    <div className="flex flex-col gap-6 p-4 md:p-6 rounded-3xl bg-near-white shadow-3xl shadow-lxl shadow-dark-neutral/10">
       <div className="flex flex-col w-full gap-2">
-        <span className="text-xs font-medium uppercase">{resolution.number && resolution.is_adopted ? (<>Resolution #<span className="font-semibold text-sm">{resolution.number!}</span></>) : "Proposed Resolution" }</span>
-        <Link href={`/actions/resolutions/${resolution.id}`} className="font-serif font-medium text-base md:text-lg italic">
+        <span className="text-xs font-medium uppercase px-1">{resolution.number && resolution.is_adopted ? (<>Resolution #<span className="font-medium text-sm">{resolution.number!}</span></>) : "Proposed Resolution" }</span>
+        <Link href={`/actions/resolutions/${resolution.id}`} className="font-serif font-medium leading-[160%] px-1 text-base md:text-lg italic">
           {resolution.is_adopted ? "A Resolution" : "A Proposed Resolution"} {resolution.title}
         </Link>
       </div>
@@ -36,7 +36,7 @@ function ResolutionCard({ resolution, showVotes = false }: Props) {
               )}
             </div>
             <div className="flex flex-col justify-center">
-              <span className="text-lg font-semibold">
+              <span className="text-lg font-medium">
                 Hon. {resolution.author.firstname} {resolution.author.lastname}
               </span>
               <div className="flex gap-2">
