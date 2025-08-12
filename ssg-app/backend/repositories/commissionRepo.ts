@@ -37,7 +37,7 @@ export async function getCommissionById(id: string): Promise<CommissionModel> {
   return data || null;
 }
 
-export async function getCommissionByInitials(initials: string): Promise<CommissionModel> {
+export async function getCommissionByInitials(initials: string): Promise<CommissionModel | null> {
   const { data, error } = await supabase
     .from("commission")
     .select("*")
@@ -45,5 +45,5 @@ export async function getCommissionByInitials(initials: string): Promise<Commiss
     .single();
     
   if (error) throw new Error(error.message);
-  return data || [];
+  return data || null;
 }

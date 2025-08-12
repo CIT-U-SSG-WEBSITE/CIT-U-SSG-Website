@@ -3,8 +3,9 @@ import {UserIcon} from "lucide-react";
 import {fetchExecutiveOrderById} from "@/backend/controllers/executiveOrderController";
 import {ExecutiveOrderModel} from "@/backend/models/executiveOrderModel";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const executiveOrder : ExecutiveOrderModel | null = await fetchExecutiveOrderById(params.id);
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const executiveOrder : ExecutiveOrderModel | null = await fetchExecutiveOrderById(id);
   
   if (!executiveOrder) {return <div>Executive order not found.</div>;}
   if (!executiveOrder.number) {return <div>Executive order  not yet publicly available</div>;}

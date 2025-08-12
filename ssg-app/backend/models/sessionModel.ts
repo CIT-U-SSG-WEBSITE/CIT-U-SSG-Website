@@ -1,6 +1,6 @@
 // models/sessionModel.ts
-import { SessionAgendaModel } from "./sessionAgendaModel";
-import { SessionAttendanceModel } from "./sessionAttendanceModel";
+import { SessionAgendaModelPlus } from "./sessionAgendaModel";
+import { SessionAttendanceModelPlus } from "./sessionAttendanceModel";
 
 export type SessionType = "REGULAR" | "EMERGENCY" | "JOINT" | "INAUGURAL" | "SPECIAL";
 
@@ -24,6 +24,6 @@ export type SessionModel = {
 // Plus model that includes navigation attributes and computed fields
 export type SessionModelPlus = SessionModel & {
   numberOrdinal: string; // e.g. 1st, 2nd, 3rd
-  agenda: SessionAgendaModel[];
-  attendance: SessionAttendanceModel[];
+  agenda: SessionAgendaModelPlus[];
+  attendance: SessionAttendanceModelPlus[];
 };

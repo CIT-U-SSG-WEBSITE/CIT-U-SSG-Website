@@ -31,8 +31,10 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     commission_id,
     commission:commission_id (
       id,
+      created_at,
       name,
       initials,
+      photo,
       type,
       brief_description,
       full_description
@@ -77,8 +79,10 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
     commission_id,
     commission:commission_id (
       id,
+      created_at,
       name,
       initials,
+      photo,
       type,
       brief_description,
       full_description
@@ -123,8 +127,10 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
     commission_id,
     commission:commission_id (
       id,
+      created_at,
       name,
       initials,
+      photo,
       type,
       brief_description,
       full_description
@@ -160,8 +166,10 @@ export async function getOfficerById(officerId: string): Promise<OfficerModel | 
     commission_id,
     commission:commission_id (
       id,
+      created_at,
       name,
       initials,
+      photo,
       type,
       brief_description,
       full_description
@@ -179,6 +187,7 @@ export async function getOfficerById(officerId: string): Promise<OfficerModel | 
     lastname: data.lastname,
     position: data.position,
     photo: data.photo, // optional
+    commissionId: data.commission_id, // optional
     commission: data.commission
   };
 }
@@ -199,8 +208,10 @@ export async function getOfficersByLastnames(lastnames: string[]): Promise<Offic
       commission_id,
       commission:commission_id (
         id,
+        created_at,
         name,
         initials,
+        photo,
         type,
         brief_description,
         full_description

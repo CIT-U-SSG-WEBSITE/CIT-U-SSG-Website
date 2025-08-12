@@ -10,8 +10,9 @@ import SessionTabSection from "@/components/Actions/Sessions/id/SessionTabSectio
 import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import {fetchResolutionsBySessionId} from "@/backend/controllers/resolutionController";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const session : SessionModelPlus | null = await fetchSessionById(params.id);
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const session : SessionModelPlus | null = await fetchSessionById(id);
   const sessionResolutions : ResolutionModelPlus[] = await fetchResolutionsBySessionId(session?.id!);
   
   const tabs : Record<string, JSX.Element> = {

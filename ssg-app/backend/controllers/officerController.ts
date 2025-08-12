@@ -86,6 +86,9 @@ export async function fetchAllOfficers() {
  */
 export async function fetchOfficersByCommission(commissionInitials: string, order: string[] = []) {
   const commission = await getCommissionByInitials(commissionInitials);
+  if (!commission) {
+    throw new Error(`Commission with initials '${commissionInitials}' not found`);
+  }
   const all = await getOfficersByCommission(commission.id);
   return all
     .sort((a, b) => order.indexOf(a.position) - order.indexOf(b.position));
