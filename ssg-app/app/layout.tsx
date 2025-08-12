@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
     <body className={`font-sans ${merriweather.variable} ${openSans.variable} antialiased`}>
       <HeaderBar/>
-      <main className="mt-[120px] min-h-screen">
+      <main className="mt-[100px] md:mt-[120px] min-h-screen">
         {children}
       </main>
       <FooterBar/>

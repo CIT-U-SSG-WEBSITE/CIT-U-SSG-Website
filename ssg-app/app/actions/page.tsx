@@ -1,7 +1,7 @@
 import {redirect} from "next/navigation";
 
 function Page() {
-  redirect('action/sessions');
+  redirect('actions/sessions');
 }
 
 export default Page;
