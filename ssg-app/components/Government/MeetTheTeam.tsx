@@ -1,8 +1,9 @@
-
+"use client"
 
 import React from 'react';
 import {OfficerModel} from "@/backend/models/officerModel";
 import OfficerCard from "@/components/Government/Officers/OfficerCard";
+import {useMediaQuery} from "react-responsive";
 
 interface Props {
   officers: OfficerModel[];
@@ -13,6 +14,8 @@ interface Props {
 export default function MeetTheTeam({ officers,
                                  title,
                                  subtitle }: Props) {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  
   return (
     <section className="w-full max-w-[1320px] flex flex-col gap-5">
       <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 lg:gap-0">
@@ -22,9 +25,9 @@ export default function MeetTheTeam({ officers,
         </div>
       </div>
       
-      <div className="grid grid-cols-4 gap-x-4 gap-y-6">
+      <div className="max-md:flex max-md:flex-col md:grid grid-cols-3 xl:grid-cols-4 gap-3 md:gap-x-4 md:gap-y-6">
         {officers.map((officer, index) =>
-          <OfficerCard key={index} officer={officer} />
+          <OfficerCard key={index} officer={officer} isMobile={isMobile}/>
         )}
       </div>
     </section>
