@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {AlignRight as Hamburger} from 'lucide-react';
-import {useMediaQuery} from "react-responsive";
 
 import { Button } from "@/components/ui/Button"
 import {

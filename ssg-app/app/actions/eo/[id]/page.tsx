@@ -54,7 +54,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
               <span className="text-lg font-bold">
                 Hon. {executiveOrder.officer.firstname} {executiveOrder.officer.lastname}
               </span>
-                  <span className="italic font-medium text-dark-neutral/80">SSG President, '{executiveOrder.series}</span>
+                  <span className="italic font-medium text-dark-neutral/80">SSG President, &apos;{executiveOrder.series}</span>
                 </div>
               </div>
             )}

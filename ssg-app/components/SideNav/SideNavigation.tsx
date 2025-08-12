@@ -36,7 +36,7 @@ function SideNavigation({links, defaultLink}: Props) {
               <ul className="flex flex-col pl-0 py-2 w-[160px] gap-2">
                 {links.filter(link => pathname !== link.href)
                   .map((link) => (
-                  <li>
+                  <li key={link.href}>
                     <NavigationMenuLink asChild>
                       <Link href={link.href}>{link.name}</Link>
                     </NavigationMenuLink>

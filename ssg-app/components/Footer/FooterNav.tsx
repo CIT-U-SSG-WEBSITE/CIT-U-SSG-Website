@@ -40,7 +40,7 @@ function FooterNav() {
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {Array.isArray(linkGroup.links) && linkGroup.links.map(link => (
-                  <Link href={link.href} className="text-sm">
+                  <Link key={link.name} href={link.href} className="text-sm">
                     {link.name}
                   </Link>
                 ))}

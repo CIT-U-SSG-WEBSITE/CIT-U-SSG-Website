@@ -10,10 +10,13 @@ type Props = {
 }
 
 function OfficerCard({ officer, isMobile: isMobileProp }: Props) {
+  // Always call useMediaQuery at the top level
+  const mediaQueryResult = useMediaQuery({ maxWidth: 768 });
+  
   // Use the provided isMobile prop if available, otherwise use mediaQuery
   const isMobile = typeof isMobileProp === "boolean"
     ? isMobileProp
-    : useMediaQuery({ maxWidth: 768 });
+    : mediaQueryResult;
   
   return (
     (isMobile) ? (

@@ -45,7 +45,7 @@ async function Page() {
           <h1 className="font-serif text-3xl font-bold">Executive Branch</h1>
           <span className="text-lg">Leading with Vision and Action</span>
         </div>
-        <p>The Executive Branch, led by the SSG President, drives the Supreme Student Government's initiatives. Supported by its <i>commissions</i>, it turns student concerns into action, oversees programs, and works with all sectors to uphold student welfare through responsive leadership and service.</p>
+        <p>The Executive Branch, led by the SSG President, drives the Supreme Student Government&apos;s initiatives. Supported by its <i>commissions</i>, it turns student concerns into action, oversees programs, and works with all sectors to uphold student welfare through responsive leadership and service.</p>
       </div>
       
       <MeetTheTeam
