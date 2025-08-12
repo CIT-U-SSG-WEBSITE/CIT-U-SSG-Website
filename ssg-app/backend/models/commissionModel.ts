@@ -8,7 +8,6 @@
 
 export type CommissionModel = {
   id: string;
-  created_at: string;
   name: string;
   initials: string;
   photo: string;

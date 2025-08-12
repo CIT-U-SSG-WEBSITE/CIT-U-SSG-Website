@@ -26,28 +26,40 @@ export default function SearchBar({ placeholder = "Search something..." }: Props
   // Helper to update the URL
   const updateSearchParam = (value: string) => {
     const params = new URLSearchParams(Array.from(searchParams.entries()))
-    value.trim()
-      ? params.set("search", value.trim())
-      : params.delete("search")
+    const trimmedValue = value.trim()
+    if (trimmedValue) {
+      params.set("search", trimmedValue)
+    } else {
+      params.delete("search")
+    }
     router.push(`?${params.toString()}`, { scroll: false })
   }
   
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       updateSearchParam(searchTerm)
-      inputRef.current?.blur()
+      if (inputRef.current) {
+        inputRef.current.blur()
+      }
     }
   }
   
-  const handleSearchClick = () => inputRef.current?.focus()
+  const handleSearchClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }
   
   const handleClear = () => {
     setSearch("")
     updateSearchParam("")
-    inputRef.current?.blur()
+    if (inputRef.current) {
+      inputRef.current.blur()
+    }
   }
   
-  const showClear = searchTerm.trim().length > 0
+  const trimmedSearchTerm = searchTerm.trim()
+  const showClear = trimmedSearchTerm.length > 0
   
   return (
     <div className="flex justify-between items-center w-full max-w-[480px] gap-4 px-6 py-1.5 !bg-near-white shadow-2xl/10 text-dark-neutral rounded-full focus-within:ring-2 focus-within:ring-ring/50 focus-within:border-ring">

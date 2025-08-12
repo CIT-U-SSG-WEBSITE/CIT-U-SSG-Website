@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { OfficerModel } from "@/backend/models/officerModel";
+import { CommissionModel } from "@/backend/models/commissionModel";
 
 /**
  * REPOSITORIES directly talk to the database.
@@ -48,8 +49,9 @@ export async function getAllOfficers(): Promise<OfficerModel[]> {
     lastname: officer.lastname,
     position: officer.position,
     photo: officer.photo, // optional
-    commissionId: officer.commission_id, // optional
-    commission: officer.commission
+    commission: officer.commission && Array.isArray(officer.commission) 
+      ? (officer.commission[0] as CommissionModel)
+      : (officer.commission as CommissionModel)
   }));
 }
 
@@ -95,8 +97,9 @@ export async function getOfficersByCommission(commissionId: string): Promise<Off
     lastname: officer.lastname,
     position: officer.position,
     photo: officer.photo, // optional
-    commissionId: officer.commission_id, // optional
-    commission: officer.commission
+    commission: officer.commission && Array.isArray(officer.commission) 
+      ? (officer.commission[0] as CommissionModel)
+      : (officer.commission as CommissionModel)
   }));
 }
 
@@ -145,8 +148,9 @@ export async function getOfficersByPosition(position: string): Promise<OfficerMo
     lastname: officer.lastname,
     position: officer.position,
     photo: officer.photo, // optional
-    commissionId: officer.commission_id, // optional
-    commission: officer.commission
+    commission: officer.commission && Array.isArray(officer.commission) 
+      ? (officer.commission[0] as CommissionModel)
+      : (officer.commission as CommissionModel)
   }));
 }
 
@@ -183,8 +187,9 @@ export async function getOfficerById(officerId: string): Promise<OfficerModel | 
     lastname: data.lastname,
     position: data.position,
     photo: data.photo, // optional
-    commissionId: data.commission_id, // optional
-    commission: data.commission
+    commission: data.commission && Array.isArray(data.commission) 
+      ? (data.commission[0] as CommissionModel)
+      : (data.commission as CommissionModel)
   };
 }
 
@@ -222,7 +227,8 @@ export async function getOfficersByLastnames(lastnames: string[]): Promise<Offic
     lastname: officer.lastname,
     position: officer.position,
     photo: officer.photo,
-    commissionId: officer.commission_id,
-    commission: officer.commission,
+    commission: officer.commission && Array.isArray(officer.commission) 
+      ? (officer.commission[0] as CommissionModel)
+      : (officer.commission as CommissionModel),
   }));
 }

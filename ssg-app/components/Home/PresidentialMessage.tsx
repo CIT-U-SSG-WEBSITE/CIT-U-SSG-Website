@@ -18,10 +18,10 @@ function PresidentialMessage() {
         </div>
         <div className="flex flex-col">
           <span className="text-lg font-serif font-bold">Zeth Villamala</span>
-          <span>SSG President, '2425</span>
+          <span>SSG President, &apos;2425</span>
         </div>
       </div>
-      <p className="italic text-center">“The SSG exists to serve, to listen, and to lead with integrity. This term, we move forward together — guided by purpose, and grounded in the voice of every Technologian.”
+      <p className="italic text-center">&ldquo;The SSG exists to serve, to listen, and to lead with integrity. This term, we move forward together — guided by purpose, and grounded in the voice of every Technologian.&rdquo;
       </p>
     </section>
   ) : (
@@ -32,11 +32,11 @@ function PresidentialMessage() {
         className="HERO_BANNER w-[280px] h-full object-cover"
       />
       <div className="MESSAGE_CONTENT flex flex-col gap-8 w-full max-w-[780px] justify-center">
-        <p>“The SSG exists to serve, to listen, and to lead with integrity. This term, we move forward together — guided by purpose, and grounded in the voice of every Technologian.”
+        <p>&ldquo;The SSG exists to serve, to listen, and to lead with integrity. This term, we move forward together — guided by purpose, and grounded in the voice of every Technologian.&rdquo;
         </p>
         <div className="flex flex-col">
           <span className="text-lg font-serif font-bold">Zeth Villamala</span>
-          <span>SSG President, '2425</span>
+          <span>SSG President, &apos;2425</span>
         </div>
       </div>
     </section>

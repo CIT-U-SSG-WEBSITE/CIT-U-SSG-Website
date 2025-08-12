@@ -25,7 +25,8 @@ export async function insertResoAuthor(author: ResoAuthorModel): Promise<ResoAut
   return {
     officer_id: data.officer_id,
     resolution_id: data.resolution_id,
-    role: data.role
+    role: data.role,
+    sequence: data.sequence
   };
 }
 

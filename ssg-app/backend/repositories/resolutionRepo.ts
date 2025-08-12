@@ -69,7 +69,11 @@ async function fetchAuthorsForResolutions(resolutionIds: string[]): Promise<{
         commission:commission_id (
           id,
           name,
-          type
+          initials,
+          photo,
+          type,
+          brief_description,
+          full_description
         )
       )
     `)

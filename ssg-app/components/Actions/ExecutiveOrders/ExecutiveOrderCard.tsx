@@ -34,7 +34,7 @@ function ExecutiveOrderCard({ executiveOrder}: Props) {
               <span className="text-lg font-semibold">
                 Hon. {executiveOrder.officer.firstname} {executiveOrder.officer.lastname}
               </span>
-              <span>SSG President, '{executiveOrder.series}</span>
+              <span className="italic font-medium text-dark-neutral/80">SSG President, &apos;{executiveOrder.series}</span>
             </div>
           </div>
         )}
