@@ -7,7 +7,7 @@ import HeroSection from "@/components/Home/HeroSection";
 
 export default function Home() {
   return (
-    <div className="w-full h-fit flex flex-col gap-24 md:gap-36 items-center md:pt-10 pb-24 md:pb-36">
+    <div className="w-full h-fit flex flex-col gap-24 md:gap-36 items-center md:pt-10 pb-24 md:pb-36 max-md:pt-4">
       <HeroSection />
       <PresidentialMessage />
       <MeetTheAdministration />
