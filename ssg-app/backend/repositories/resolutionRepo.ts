@@ -184,7 +184,10 @@ export async function getResolutionById(resolutionId: string): Promise<Resolutio
     .eq("id", resolutionId)
     .single();
   
-  if (resError) throw new Error(resError.message);
+  if (resError) {
+    if (resError.code === "PGRST116") return null; // No rows found
+    throw new Error(resError.message);
+  }
   if (!resolution) return null;
   const { authorMap, coAuthorMap } = await fetchAuthorsForResolutions([resolution.id]);
   return mapResolution(resolution, authorMap, coAuthorMap);

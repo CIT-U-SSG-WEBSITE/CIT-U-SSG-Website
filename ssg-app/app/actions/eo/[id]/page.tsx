@@ -1,13 +1,23 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 import {UserIcon} from "lucide-react";
 import {fetchExecutiveOrderById} from "@/backend/controllers/executiveOrderController";
 import {ExecutiveOrderModel} from "@/backend/models/executiveOrderModel";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const executiveOrder : ExecutiveOrderModel | null = await fetchExecutiveOrderById(id);
+  let executiveOrder: ExecutiveOrderModel | null = null;
   
-  if (!executiveOrder) {return <div>Executive order not found.</div>;}
+  try {
+    executiveOrder = await fetchExecutiveOrderById(id);
+  } catch (error) {
+    console.error("Error loading executive order data:", error);
+  }
+  
+  if (!executiveOrder) {
+    notFound();
+  }
+  
   if (!executiveOrder.number) {return <div>Executive order  not yet publicly available</div>;}
   
   const text = executiveOrder.body && executiveOrder.body.length > 0 ? executiveOrder.body : null;

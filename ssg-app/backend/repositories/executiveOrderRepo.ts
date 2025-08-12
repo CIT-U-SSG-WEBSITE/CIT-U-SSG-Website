@@ -16,7 +16,10 @@ export async function getExecutiveOrderById(id: string): Promise<ExecutiveOrderM
     .select('*, officer:president(*)')
     .eq('id', id)
     .single();
-  if (error) throw error;
+  if (error) {
+    if (error.code === "PGRST116") return null; // No rows found
+    throw error;
+  }
   return data as ExecutiveOrderModel;
 }
 

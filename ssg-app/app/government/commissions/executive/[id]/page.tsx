@@ -1,4 +1,5 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 import {fetchCommissionById} from "@/backend/controllers/commissionController";
 import {fetchOfficersByCommission} from "@/backend/controllers/officerController";
 import MeetTheTeam from "@/components/Government/MeetTheTeam";
@@ -22,7 +23,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   }
   
   if (!commission) {
-    return <div>Commission not found.</div>;
+    notFound();
   }
   
   return (

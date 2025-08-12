@@ -1,4 +1,5 @@
 import React, {JSX} from 'react';
+import { notFound } from 'next/navigation';
 import { fetchSessionById } from "@/backend/controllers/sessionController";
 import {SessionModelPlus} from "@/backend/models/sessionModel";
 import SessionSummary from "@/components/Actions/Sessions/SessionSummary";
@@ -12,16 +13,28 @@ import {fetchResolutionsBySessionId} from "@/backend/controllers/resolutionContr
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const session : SessionModelPlus | null = await fetchSessionById(id);
-  const sessionResolutions : ResolutionModelPlus[] = await fetchResolutionsBySessionId(session?.id!);
+  let session: SessionModelPlus | null = null;
+  let sessionResolutions: ResolutionModelPlus[] = [];
+  
+  try {
+    session = await fetchSessionById(id);
+    
+    if (session) {
+      sessionResolutions = await fetchResolutionsBySessionId(session.id);
+    }
+  } catch (error) {
+    console.error("Error loading session data:", error);
+  }
+  
+  if (!session) {
+    notFound();
+  }
   
   const tabs : Record<string, JSX.Element> = {
-    "Agenda": <SessionAgenda agenda={session?.agenda} />,
+    "Agenda": <SessionAgenda agenda={session.agenda} />,
     "Resolutions": <SessionResolutions resolutions={sessionResolutions} />,
     "Attendance": <SessionAttendance session={session} />
   }
-  
-  if (!session) {return <div>Session not found.</div>;}
   
   return (
     <div className="flex flex-col w-full h-fit gap-16">

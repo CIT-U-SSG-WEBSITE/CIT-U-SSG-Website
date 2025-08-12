@@ -1,13 +1,23 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 import {ResolutionModelPlus} from "@/backend/models/resolutionModel";
 import {fetchResolutionById} from "@/backend/controllers/resolutionController";
 import {UserIcon} from "lucide-react";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const resolution : ResolutionModelPlus | null = await fetchResolutionById(id);
+  let resolution: ResolutionModelPlus | null = null;
   
-  if (!resolution) {return <div>Resolution not found.</div>;}
+  try {
+    resolution = await fetchResolutionById(id);
+  } catch (error) {
+    console.error("Error loading resolution data:", error);
+  }
+  
+  if (!resolution) {
+    notFound();
+  }
+  
   if (!resolution.number) {return <div>Resolution not yet publicly available</div>;}
   
   const text = resolution.body && resolution.body.length > 0 ? resolution.body : null;
