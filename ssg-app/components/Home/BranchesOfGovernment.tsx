@@ -71,7 +71,7 @@ function BranchesOfGovernment() {
                       <Icon size={32} strokeWidth={2} />
                     </div>
                     <div className="flex flex-col grow-1 items-start">
-                      <span className="text-2xl font-serif font-bold">The {branch.name}</span>
+                      <span className="text-2xl font-serif font-medium">The {branch.name}</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-6 lg:gap-8 w-full items-start">

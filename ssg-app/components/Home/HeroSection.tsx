@@ -8,7 +8,7 @@ function HeroSection() {
     <section className="w-full max-w-[1320px] flex flex-col gap-8 md:gap-16 px-4 md:px-10 lg:px-16">
       <div className="flex flex-col md:flex-row justify-between lg:items-end gap-6 lg:gap-0">
         <div className="flex flex-col gap-2">
-          <span className="font-serif text-4xl font-medium leading-[120%]">ALWAYS, FOR THE TECHNOLOGIANS</span>
+          <span className="font-serif text-4xl font-medium leading-[120%]">FOR THE TECHNOLOGIANS, ALWAYS</span>
           <span className="text-lg lg:text-xl">The sole representative and voice of the Technologians</span>
         </div>
         <Link href="/actions">
