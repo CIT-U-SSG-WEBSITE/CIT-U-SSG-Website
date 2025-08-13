@@ -13,7 +13,7 @@ function FooterBar() {
             <Image width={42} height={20} src="/icon_logo.png" alt="SSG Bridge the Gap logo"/>
             <div className="flex flex-col gap-0.5">
               <span className="font-serif">41st Supreme Student Government</span>
-              <span className="text-sm">Cebu Institue of Technology - University</span>
+              <span className="text-sm">Cebu Institute of Technology - University</span>
             </div>
             <span className="text-sm">The sole representative and voice of the Technologians</span>
           </div>
