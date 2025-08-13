@@ -19,7 +19,9 @@ function MeetTheAdministration() {
   
   // set the count of officers to display based on screen size
   let officerCount : number;
-  if (useMediaQuery({ maxWidth: 1280 })) {
+  if (useMediaQuery({ maxWidth: 768 })) {
+    officerCount = 7;
+  } else if (useMediaQuery({ maxWidth: 1280 })) {
     officerCount = 6;
   } else {
     officerCount = 5;
